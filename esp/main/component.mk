@@ -8,7 +8,3 @@ CXXFLAGS += -std=c++14
 
 COMPONENT_OBJS := \
     m8rscript.o \
-    RtosGPIOInterface.o \
-    RtosSystemInterface.o \
-    RtosTCP.o \
-    RtosWifi.o \
