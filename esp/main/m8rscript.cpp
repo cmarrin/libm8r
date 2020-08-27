@@ -16,8 +16,8 @@
 #include "Application.h"
 #include "Defines.h"
 #include "Mallocator.h"
-#include "M8rscript.h"
-#include "Marly.h"
+//#include "M8rscript.h"
+//#include "Marly.h"
 #include "MStream.h"
 #include "SystemInterface.h"
 #include "SystemTime.h"
@@ -27,14 +27,14 @@
 
 static m8r::Duration MainTaskSleepDuration = 10ms;
 
-m8rscript::M8rscriptScriptingLanguage m8rscriptScriptingLanguage;
-marly::MarlyScriptingLanguage marlyScriptingLanguage;
+//m8rscript::M8rscriptScriptingLanguage m8rscriptScriptingLanguage;
+//marly::MarlyScriptingLanguage marlyScriptingLanguage;
 
 extern "C" void app_main()
 {
     m8r::Application* application = new m8r::Application(23);
-    m8r::system()->registerScriptingLanguage(&m8rscriptScriptingLanguage);
-    m8r::system()->registerScriptingLanguage(&marlyScriptingLanguage);
+    //m8r::system()->registerScriptingLanguage(&m8rscriptScriptingLanguage);
+    //m8r::system()->registerScriptingLanguage(&marlyScriptingLanguage);
     application->runAutostartTask();
 
     while(1) {
