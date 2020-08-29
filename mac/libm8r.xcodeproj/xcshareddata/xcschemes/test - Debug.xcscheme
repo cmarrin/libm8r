@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+               BlueprintIdentifier = "49FAB98324FA991700E71C93"
                BuildableName = "test"
                BlueprintName = "test"
                ReferencedContainer = "container:libm8r.xcodeproj">
@@ -44,7 +44,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+            BlueprintIdentifier = "49FAB98324FA991700E71C93"
             BuildableName = "test"
             BlueprintName = "test"
             ReferencedContainer = "container:libm8r.xcodeproj">
@@ -61,7 +61,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+            BlueprintIdentifier = "49FAB98324FA991700E71C93"
             BuildableName = "test"
             BlueprintName = "test"
             ReferencedContainer = "container:libm8r.xcodeproj">
