@@ -25,7 +25,8 @@ public:
     
     ~Application();
     
-    void runAutostartTask();
+    void runAutostartTask(const SharedPtr<Executable>& exec);
+    void runAutostartTask(const char* filename);
     bool runOneIteration();
     
     void receivedData(const String& data, KeyAction action)
@@ -44,6 +45,8 @@ public:
 
 private:
     void init(uint16_t port);
+    
+    void runAutostartTaskHelper(const SharedPtr<Task>&);
     
     SharedPtr<Task> _autostartTask;
     std::unique_ptr<Terminal> _terminal;

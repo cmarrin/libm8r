@@ -26,16 +26,6 @@ using namespace m8r;
 #define ENABLE_HEARTBEAT
 #define ENABLE_SHELL
 
-class Sample : public Executable
-{
-public:
-    virtual CallReturnValue execute() override
-    {
-        print("***** Hello Native World!!!\n");
-        return CallReturnValue(CallReturnValue::Type::Finished);
-    }
-};
-
 SystemInterface* Application::_system = nullptr;
 
 Application::Application(uint16_t port)
@@ -87,9 +77,23 @@ void Application::init(uint16_t port)
     }
 }
 
-void Application::runAutostartTask()
+void Application::runAutostartTask(const char* filename)
 {
-    _autostartTask = SharedPtr<Task>(new Task());
+    SharedPtr<Task> task(new Task);
+    task->load(filename);
+    runAutostartTaskHelper(task);
+}
+
+void Application::runAutostartTask(const SharedPtr<Executable>& exec)
+{
+    SharedPtr<Task> task(new Task);
+    task->load(exec);
+    runAutostartTaskHelper(task);
+}
+
+void Application::runAutostartTaskHelper(const SharedPtr<Task>& task)
+{
+    _autostartTask = task;
     _autostartTask->setConsolePrintFunction([](const String& s) {
         system()->printf("%s", s.c_str());
     });
@@ -105,12 +109,6 @@ void Application::runAutostartTask()
         _autostartTask->receivedData(String(line, static_cast<uint32_t>(size)), KeyAction::None);
     });
 
-    if (!_autostartTask->load("/sys/bin/hello.m8r")) {
-        if (!_autostartTask->load("/sys/bin/hello.marly")) {
-            _autostartTask->load(SharedPtr<Sample>(new Sample()));
-        }
-    }
-    
     system()->taskManager()->run(_autostartTask, [this](m8r::Task*) {
         m8r::system()->printf("******* autostart task completed.\n");
         _autostartTask.reset();
