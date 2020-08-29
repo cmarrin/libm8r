@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1110"
+   LastUpgradeVersion = "1160"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "49D9B8171D1C854700724911"
-               BuildableName = "m8rsim.app"
-               BlueprintName = "m8rsim"
-               ReferencedContainer = "container:m8rscript.xcodeproj">
+               BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+               BuildableName = "test"
+               BlueprintName = "test"
+               ReferencedContainer = "container:libm8r.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,20 +27,11 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49D9B8171D1C854700724911"
-            BuildableName = "m8rsim.app"
-            BlueprintName = "m8rsim"
-            ReferencedContainer = "container:m8rscript.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <Testables>
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -53,10 +44,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49D9B8171D1C854700724911"
-            BuildableName = "m8rsim.app"
-            BlueprintName = "m8rsim"
-            ReferencedContainer = "container:m8rscript.xcodeproj">
+            BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+            BuildableName = "test"
+            BlueprintName = "test"
+            ReferencedContainer = "container:libm8r.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -70,10 +61,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "49D9B8171D1C854700724911"
-            BuildableName = "m8rsim.app"
-            BlueprintName = "m8rsim"
-            ReferencedContainer = "container:m8rscript.xcodeproj">
+            BlueprintIdentifier = "4945A86E1EC3711D00559CD1"
+            BuildableName = "test"
+            BlueprintName = "test"
+            ReferencedContainer = "container:libm8r.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
