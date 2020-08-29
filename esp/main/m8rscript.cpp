@@ -16,8 +16,6 @@
 #include "Application.h"
 #include "Defines.h"
 #include "Mallocator.h"
-//#include "M8rscript.h"
-//#include "Marly.h"
 #include "MStream.h"
 #include "SystemInterface.h"
 #include "SystemTime.h"
@@ -27,18 +25,23 @@
 
 static m8r::Duration MainTaskSleepDuration = 10ms;
 
-//m8rscript::M8rscriptScriptingLanguage m8rscriptScriptingLanguage;
-//marly::MarlyScriptingLanguage marlyScriptingLanguage;
+class Sample : public m8r::Executable
+{
+public:
+    virtual m8r::CallReturnValue execute() override
+    {
+        print("***** Hello Native World!!!\n");
+        return m8r::CallReturnValue(m8r::CallReturnValue::Type::Finished);
+    }
+};
 
 extern "C" void app_main()
 {
-    m8r::Application* application = new m8r::Application(23);
-    //m8r::system()->registerScriptingLanguage(&m8rscriptScriptingLanguage);
-    //m8r::system()->registerScriptingLanguage(&marlyScriptingLanguage);
-    application->runAutostartTask();
+    m8r::Application application(23);
+    application.runAutostartTask(m8r::SharedPtr<Sample>(new Sample()));
 
     while(1) {
-        application->runOneIteration();
+        application.runOneIteration();
         vTaskDelay(pdMS_TO_TICKS(MainTaskSleepDuration.ms()));
     }
 }
