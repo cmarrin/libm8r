@@ -56,7 +56,7 @@ void Application::init(uint16_t port)
     _webServer->on("/", "index.html");
     _webServer->on("/favicon.ico", "favicon.ico");
 #endif
-#ifdef ENABLE_WEBSERVER
+#ifdef ENABLE_SHELL
     _terminal = std::make_unique<Terminal>(port, [this]()
     {
         SharedPtr<Task> task(new Task());
