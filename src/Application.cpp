@@ -28,12 +28,7 @@ using namespace m8r;
 
 SystemInterface* Application::_system = nullptr;
 
-Application::Application(uint16_t port)
-{
-    init(port);
-}
-
-void Application::init(uint16_t port)
+Application::Application(HeartBeatType heartBeatType, const char* webServerRoot, uint16_t shellPort)
 {
     // Seed the random number generator
     srand(static_cast<unsigned>(Time::now().us()));
@@ -41,29 +36,32 @@ void Application::init(uint16_t port)
     assert(!_system);
     _system = SystemInterface::create();
     
-#ifdef ENABLE_HEARTBEAT
-    system()->setHeartrate(1s);
-#endif
+    if (heartBeatType != HeartBeatType::None) {
+        system()->setHeartrate(1s);
+    }
+
     system()->init();
 
-#ifdef ENABLE_HEARTBEAT
-    system()->setHeartrate(3s);
-#endif
+    if (heartBeatType == HeartBeatType::Status) {
+        system()->setHeartrate(3s);
+    }
     
-#ifdef ENABLE_WEBSERVER
-    // Setup test web server
-    _webServer = std::make_unique<HTTPServer>(80, "/sys/bin");
-    _webServer->on("/", "index.html");
-    _webServer->on("/favicon.ico", "favicon.ico");
-#endif
-#ifdef ENABLE_SHELL
-    _terminal = std::make_unique<Terminal>(port, [this]()
-    {
-        SharedPtr<Task> task(new Task());
-        task->load(SharedPtr<Shell>(new Shell()));
-        return task;
-    });
-#endif
+    if (webServerRoot != nullptr) {
+        // Setup test web server
+        _webServer = std::make_unique<HTTPServer>(80, webServerRoot);
+        _webServer->on("/", "index.html");
+        _webServer->on("/favicon.ico", "favicon.ico");
+    }
+
+    if (shellPort != 0) {
+        _terminal = std::make_unique<Terminal>(shellPort, [this]()
+        {
+            SharedPtr<Task> task(new Task());
+            task->load(SharedPtr<Shell>(new Shell()));
+            return task;
+        });
+    }
+
     mountFileSystem();
 
     // Start things running

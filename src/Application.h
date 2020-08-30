@@ -21,7 +21,9 @@ class HTTPServer;
 
 class Application {
 public:
-    Application(uint16_t port);
+    enum class HeartBeatType { None, Constant, Status };
+    
+    Application(HeartBeatType = HeartBeatType::None, const char* webServerRoot = nullptr, uint16_t shellPort = 0);
     
     ~Application();
     
@@ -44,8 +46,6 @@ public:
     static SystemInterface* system() { assert(_system); return _system; }
 
 private:
-    void init(uint16_t port);
-    
     void runAutostartTaskHelper(const SharedPtr<Task>&);
     
     SharedPtr<Task> _autostartTask;

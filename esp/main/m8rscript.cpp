@@ -37,7 +37,7 @@ public:
 
 extern "C" void app_main()
 {
-    m8r::Application application(23);
+    m8r::Application application;
     application.runAutostartTask(m8r::SharedPtr<Sample>(new Sample()));
 
     while(1) {
