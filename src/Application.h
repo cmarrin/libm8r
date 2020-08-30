@@ -21,9 +21,9 @@ class HTTPServer;
 
 class Application {
 public:
-    enum class HeartBeatType { None, Constant, Status };
+    enum class HeartbeatType { None, Constant, Status };
     
-    Application(HeartBeatType = HeartBeatType::None, const char* webServerRoot = nullptr, uint16_t shellPort = 0);
+    Application(HeartbeatType = HeartbeatType::None, const char* webServerRoot = nullptr, uint16_t shellPort = 0);
     
     ~Application();
     

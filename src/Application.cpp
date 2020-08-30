@@ -28,7 +28,7 @@ using namespace m8r;
 
 SystemInterface* Application::_system = nullptr;
 
-Application::Application(HeartBeatType heartBeatType, const char* webServerRoot, uint16_t shellPort)
+Application::Application(HeartbeatType heartbeatType, const char* webServerRoot, uint16_t shellPort)
 {
     // Seed the random number generator
     srand(static_cast<unsigned>(Time::now().us()));
@@ -36,13 +36,13 @@ Application::Application(HeartBeatType heartBeatType, const char* webServerRoot,
     assert(!_system);
     _system = SystemInterface::create();
     
-    if (heartBeatType != HeartBeatType::None) {
+    if (heartbeatType != HeartbeatType::None) {
         system()->setHeartrate(1s);
     }
 
     system()->init();
 
-    if (heartBeatType == HeartBeatType::Status) {
+    if (heartbeatType == HeartbeatType::Status) {
         system()->setHeartrate(3s);
     }
     
