@@ -41,7 +41,7 @@ public:
     Error error() const { return _error; }
     
     bool readyToRun() const { return state() == State::Ready || _executable->readyToRun(); }
-    void requestYield() const { _executable->requestYield(); }
+    void requestYield() const { if (_executable) _executable->requestYield(); }
     
     void receivedData(const String& data, KeyAction action) { _executable->receivedData(data, action); }
     
