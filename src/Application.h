@@ -43,6 +43,8 @@ public:
 
     bool mountFileSystem();
     
+    static void uploadFiles(const Vector<const char*>& files, const char* destPath);
+    
     static SystemInterface* system() { assert(_system); return _system; }
 
 private:

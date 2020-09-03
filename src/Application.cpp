@@ -171,3 +171,65 @@ bool Application::runOneIteration()
     }
     return system()->runOneIteration();
 }
+
+void Application::uploadFiles(const Vector<const char*>& files, const char* destPath)
+{
+    for (const auto it : files) {
+        m8r::String toPath;
+        FILE* fromFile = fopen(it, "r");
+        if (!fromFile) {
+            fprintf(stderr, "Unable to open '%s' for upload, skipping\n", it);
+        } else if (m8r::system()->fileSystem()) {
+            m8r::Vector<m8r::String> parts = m8r::String(it).split("/");
+            m8r::String baseName = parts[parts.size() - 1];
+            
+            if (destPath[0] != '/') {
+                toPath += '/';
+            }
+            toPath += destPath;
+            if (toPath[toPath.size() - 1] != '/') {
+                toPath += '/';
+            }
+            
+            // Make sure the directory path exists
+            m8r::system()->fileSystem()->makeDirectory(toPath.c_str());
+            if (m8r::system()->fileSystem()->lastError() != m8r::Error::Code::OK) {
+                m8r::system()->print(m8r::Error::formatError(m8r::system()->fileSystem()->lastError().code(), 
+                                                        "Unable to create '%s'", toPath.c_str()).c_str());
+            } else {
+                toPath += baseName;
+                
+                m8r::Mad<m8r::File> toFile(m8r::system()->fileSystem()->open(toPath.c_str(), m8r::FS::FileOpenMode::Write));
+                if (!toFile->valid()) {
+                    m8r::system()->print(m8r::Error::formatError(toFile->error().code(), 
+                                                            "Error: unable to open '%s'", toPath.c_str()).c_str());
+                } else {
+                    bool success = true;
+                    while (1) {
+                        char c;
+                        size_t size = fread(&c, 1, 1, fromFile);
+                        if (size != 1) {
+                            if (!feof(fromFile)) {
+                                fprintf(stderr, "Error reading '%s', upload failed\n", it);
+                                success = false;
+                            }
+                            break;
+                        }
+                        
+                        toFile->write(c);
+                        if (!toFile->valid()) {
+                            fprintf(stderr, "Error writing '%s', upload failed\n", toPath.c_str());
+                            success = false;
+                            break;
+                        }
+                    }
+                    toFile->close();
+                    if (success) {
+                        printf("Uploaded '%s' to '%s'\n", it, toPath.c_str());
+                    }
+                }
+            }
+        }
+        fclose(fromFile);
+    }
+}
