@@ -72,6 +72,8 @@ public:
     virtual uint32_t totalSize() const = 0;
     virtual uint32_t totalUsed() const = 0;
     
+    bool valid() const { return _error == Error::Code::OK; }
+
     Error lastError() const { return _error; }
     
     static const char* errorString(Error);

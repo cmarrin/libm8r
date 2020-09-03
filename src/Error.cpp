@@ -35,6 +35,7 @@ const char* Error::description(Code code)
         case Code::TooManyOpenFiles         : return "Too Many Open Files";
         case Code::DirectoryNotFound        : return "Directory Not Found";
         case Code::DirectoryNotEmpty        : return "Directory Not Empty";
+        case Code::EndOfDirectory           : return "EndOfDirectory";
         case Code::NotADirectory            : return "Not A Directory";
         case Code::NotAFile                 : return "Not A File";
         case Code::InvalidFileName          : return "Invalid Filename";

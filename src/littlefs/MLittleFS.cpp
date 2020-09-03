@@ -15,9 +15,10 @@ using namespace m8r;
 
 lfs_t LittleFS::_littleFileSystem;
 
-
 LittleFS::LittleFS()
 {
+    _error = Error::Code::NoFS;
+    
     memset(&_littleFileSystem, 0, sizeof(_littleFileSystem));
 
     lfs_size_t fsSize = FS::PhysicalSize;
@@ -61,21 +62,15 @@ bool LittleFS::mount()
         }
         return false;
     }
-    if (!mounted()) {
-        system()->printf("ERROR: LittleFS filesystem failed to mount\n");
-        _error = Error::Code::MountFailed;
-        return false;
-    }
 
     system()->printf("LittleFS mounted successfully\n");
     _error = Error::Code::OK;
-
     return true;
 }
 
 bool LittleFS::mounted() const
 {
-    return true; //SPIFFS_mounted(const_cast<spiffs_t*>(&_littleFileSystem));
+    return _error == Error::Code::OK;
 }
 
 void LittleFS::unmount()
@@ -94,11 +89,10 @@ bool LittleFS::format()
     
     int32_t result = lfs_format(&_littleFileSystem, &_config);
     if (result != 0) {
-        system()->printf("ERROR: LittleFS format failed, error=%d\n", result);
+        _error = mapLittleError(lfs_error(result));
         return false;
     }
-    mount();
-    return true;
+    return mount();
 }
 
 Mad<File> LittleFS::open(const char* name, FileOpenMode mode)
@@ -122,6 +116,10 @@ Mad<Directory> LittleFS::openDirectory(const char* name)
 
 bool LittleFS::makeDirectory(const char* name)
 {
+    if (!mounted()) {
+        return false;
+    }
+    
     // TODO: For now assume the filename is in the root directory, whether it starts with '/' or not
     _error = Error::Code::OK;
     
@@ -144,27 +142,47 @@ bool LittleFS::makeDirectory(const char* name)
 
 bool LittleFS::remove(const char* name)
 {
+    if (!mounted()) {
+        return false;
+    }
+    
     return lfs_remove(&_littleFileSystem, name) == 0;
 }
 
 bool LittleFS::rename(const char* src, const char* dst)
 {
+    if (!mounted()) {
+        return false;
+    }
+    
     return lfs_rename(&_littleFileSystem, src, dst) == 0;
 }
 
 bool LittleFS::exists(const char* name) const
 {
+    if (!mounted()) {
+        return false;
+    }
+    
     struct lfs_info info;
     return lfs_stat(&_littleFileSystem, name, &info) == LFS_ERR_OK;
 }
 
 uint32_t LittleFS::totalSize() const
 {
+    if (!mounted()) {
+        return 0;
+    }
+    
     return static_cast<uint32_t>(_config.block_count * _config.block_size);
 }
 
 uint32_t LittleFS::totalUsed() const
 {
+    if (!mounted()) {
+        return 0;
+    }
+    
     lfs_ssize_t allocatedBlocks = lfs_fs_size(&_littleFileSystem);
     return (allocatedBlocks < 0) ? 0 : (static_cast<uint32_t>(allocatedBlocks) * _config.block_size);
 }
@@ -198,14 +216,28 @@ Error::Code LittleFS::mapLittleError(lfs_error error)
 
 LittleDirectory::LittleDirectory(const char* name)
 {
+    if (system()->fileSystem()->valid()) {
+        _error = Error::Code::DirectoryNotFound;
+        return;
+    }
+    
     lfs_dir_open(&LittleFS::_littleFileSystem, &_dir, name);
     next();
 }
 
 bool LittleDirectory::next()
 {
+    if (_error != Error::Code::OK) {
+        return false;
+    }
+    
     lfs_info info;
-    lfs_dir_read(&LittleFS::_littleFileSystem, &_dir, &info);
+    int result = lfs_dir_read(&LittleFS::_littleFileSystem, &_dir, &info);
+    if (result <= 0) {
+        _error = (result == 0) ? Error::Code::EndOfDirectory : LittleFS::mapLittleError(lfs_error(result));
+        return false;
+    }
+    
     _size = info.size;
     _name = String(info.name);
     return true;
@@ -223,6 +255,11 @@ static const int _fileModeMap[] = {
 
 void LittleFile::open(const char* name, FS::FileOpenMode mode)
 {
+    if (!system()->fileSystem()->valid()) {
+        _error = Error::Code::NotMounted;
+        return;
+    }
+    
     memset(&_config, 0, sizeof(_config));
     _config.buffer = _buffer;
     lfs_error err = static_cast<lfs_error>(lfs_file_opencfg(&LittleFS::_littleFileSystem, &_file, name, _fileModeMap[static_cast<int>(mode)], &_config));
@@ -237,6 +274,10 @@ LittleFile::~LittleFile()
   
 int32_t LittleFile::read(char* buf, uint32_t size)
 {
+    if (!valid()) {
+        return -1;
+    }
+    
     if (_mode == FS::FileOpenMode::Write || _mode == FS::FileOpenMode::Append) {
         _error = Error::Code::NotReadable;
         return -1;
@@ -246,6 +287,10 @@ int32_t LittleFile::read(char* buf, uint32_t size)
 
 int32_t LittleFile::write(const char* buf, uint32_t size)
 {
+    if (!valid()) {
+        return -1;
+    }
+    
     if (_mode == FS::FileOpenMode::Read) {
         _error = Error::Code::NotWritable;
         return -1;
@@ -268,6 +313,10 @@ void LittleFile::close()
 
 bool LittleFile::seek(int32_t offset, SeekWhence whence)
 {
+    if (!valid()) {
+        return false;
+    }
+    
     if (_mode == FS::FileOpenMode::Append) {
         _error = Error::Code::SeekNotAllowed;
         return -1;
@@ -277,11 +326,19 @@ bool LittleFile::seek(int32_t offset, SeekWhence whence)
 
 int32_t LittleFile::tell() const
 {
+    if (!valid()) {
+        return -1;
+    }
+    
     return lfs_file_tell(&LittleFS::_littleFileSystem, const_cast<lfs_file_t*>(&_file));
 }
 
 int32_t LittleFile::size() const
 {
+    if (!valid()) {
+        return -1;
+    }
+    
     return static_cast<int32_t>(lfs_file_size(&LittleFS::_littleFileSystem, const_cast<lfs_file_t*>(&_file)));
 }
 

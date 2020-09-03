@@ -41,6 +41,7 @@ public:
         TooManyOpenFiles,
         DirectoryNotFound,
         DirectoryNotEmpty,
+        EndOfDirectory,
         NotADirectory,
         NotAFile,
         InvalidFileName,
