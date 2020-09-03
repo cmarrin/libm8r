@@ -164,6 +164,9 @@
 		492C7DA124EDF9FA0027B75E /* ScriptingLanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScriptingLanguage.h; path = ../src/ScriptingLanguage.h; sourceTree = "<group>"; };
 		493E015E24E9DCBD00EF89B3 /* cpptime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpptime.h; sourceTree = "<group>"; };
 		494D254E1D2E9055003755DB /* liblibm8r.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibm8r.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		49736EDC250081A000B0A09E /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = favicon.ico; path = ../web/favicon.ico; sourceTree = "<group>"; };
+		49736EDD250081A000B0A09E /* gwd_workspace.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = gwd_workspace.json; path = ../web/gwd_workspace.json; sourceTree = "<group>"; };
+		49736EDE250081A000B0A09E /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../web/index.html; sourceTree = "<group>"; };
 		497DC63423A5771A00748031 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = ../esp/Makefile; sourceTree = "<group>"; };
 		497DC63623A5835100748031 /* component.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = component.mk; path = ../esp/main/component.mk; sourceTree = "<group>"; };
 		497DC63823A5849E00748031 /* sdkconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdkconfig; path = ../esp/sdkconfig; sourceTree = "<group>"; };
@@ -319,11 +322,22 @@
 			name = esprtos;
 			sourceTree = "<group>";
 		};
+		49736EDB2500814A00B0A09E /* web */ = {
+			isa = PBXGroup;
+			children = (
+				49736EDC250081A000B0A09E /* favicon.ico */,
+				49736EDD250081A000B0A09E /* gwd_workspace.json */,
+				49736EDE250081A000B0A09E /* index.html */,
+			);
+			name = web;
+			sourceTree = "<group>";
+		};
 		49E647DF1D00B68F005F5059 = {
 			isa = PBXGroup;
 			children = (
 				491B92E424ECAD7E0078A2B9 /* src */,
 				49FAB98524FA991700E71C93 /* test */,
+				49736EDB2500814A00B0A09E /* web */,
 				49E647E91D00B68F005F5059 /* Products */,
 				49FAB98D24FA9C9300E71C93 /* Frameworks */,
 			);
