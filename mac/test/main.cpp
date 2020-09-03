@@ -24,7 +24,8 @@ public:
 int main(int argc, char * argv[])
 {
     m8r::initMacSystemInterface("m8rFSFile", [](const char* s) { ::printf("%s", s); });
-    m8r::Application application;
+    m8r::Application application(m8r::Application::HeartbeatType::Status, "/sys/bin", 23);
+    
     application.runAutostartTask(m8r::SharedPtr<Sample>(new Sample()));
     
     while (true) {

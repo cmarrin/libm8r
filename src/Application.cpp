@@ -46,7 +46,12 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
         system()->setHeartrate(3s);
     }
     
+    mountFileSystem();
+
     if (webServerRoot != nullptr) {
+        // Upload files needed by web server
+        uploadFiles({ "web/index.html", "web/favicon.ico" }, webServerRoot);
+
         // Setup test web server
         _webServer = std::make_unique<HTTPServer>(80, webServerRoot);
         _webServer->on("/", "index.html");
@@ -61,8 +66,6 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
             return task;
         });
     }
-
-    mountFileSystem();
 
     // Start things running
     system()->printf("\n*** m8rscript v%d.%d - %s\n", MajorVersion, MinorVersion, __TIMESTAMP__);
