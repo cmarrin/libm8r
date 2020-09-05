@@ -142,7 +142,34 @@
             transform: translate3d(0px, -13px, 0px);
             transform-style: preserve-3d;
         }
+        .gwd-button-m68i {
+            position: absolute;
+            height: 23px;
+            left: 675px;
+            top: 99px;
+            width: 121px;
+            transform-origin: 50% 50% 0px;
+        }
     </style>
+    <script>
+        function getREST(func) {
+            fetch("http://localhost/rest/v1/" + func)
+                .then(response => response.json())
+                    .then(data => setSSIDList(data));
+        }
+        
+        function setSSIDList(array)
+        {
+            var list = document.getElementById('ssidList');
+            list.innerHTML = "";
+            for (var i = 0; i < array.length; i++) {
+                console.log("****** array item='" + array[i] + "'");
+                var item = document.createElement('li');
+                item.appendChild(document.createTextNode(array[i]));
+                list.appendChild(item);
+            }
+        }
+    </script>
 </head>
 
 <body class="htmlNoPages">
@@ -155,7 +182,7 @@
     <div class="gwd-div-1z2g">
         <span class="gwd-span-kcc6">Available Networks</span>
         <div class="gwd-div-k6bn">
-            <ul>
+            <ul id="ssidList">
                 <li>First Network</li>
                 <li>Second Network</li>
                 <li>Third Network</li>
@@ -166,6 +193,7 @@
         <span class="gwd-span-1c6z">Password:</span>
         <input type="password" class="gwd-input-dzwd" placeholder="password">
     </div>
+    <button class="gwd-button-m68i" type="submit" onclick="getREST('getSSIDList')">Refresh</button>
 </body>
 
 </html>

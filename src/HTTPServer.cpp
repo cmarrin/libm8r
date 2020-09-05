@@ -164,7 +164,7 @@ HTTPServer::HTTPServer(uint16_t port, const char* rootDir, bool dirAccess)
                     const RequestHandler* foundRequest = nullptr;
                     
                     for (const auto& it : _requestHandlers) {
-                        if (it._uri.size() <= req.path.size()) {
+                        if (it._uri.size() >= req.path.size()) {
                             continue;
                         }
                         
@@ -177,7 +177,11 @@ HTTPServer::HTTPServer(uint16_t port, const char* rootDir, bool dirAccess)
                     if (foundRequest) {
                         String suffix = String(req.path.c_str() + foundRequest->_uri.size());
                         if (foundRequest->_requestHandler) {
-                            foundRequest->_requestHandler(foundRequest->_uri, suffix, req, connectionId);
+                            String response = foundRequest->_requestHandler(foundRequest->_uri, suffix, req, connectionId);
+                            if (!response.empty()) {
+                                sendResponseHeader(connectionId, response.size());
+                                _socket->send(connectionId, response.c_str());
+                            }
                         }
                         handled = true;
                     }
@@ -252,7 +256,7 @@ void HTTPServer::on(const String& uri, const String& path, bool dirAccess)
         if (!file->valid()) {
             system()->print(Error::formatError(file->error().code(), 
                                     "******** HTTPServer: unable to open '%s'", filename.c_str()).c_str());
-            return;
+            return String();
         }
         
         int32_t size = file->size();
@@ -278,5 +282,6 @@ void HTTPServer::on(const String& uri, const String& path, bool dirAccess)
         }
         
         file->close();
+        return String();
     });
 }

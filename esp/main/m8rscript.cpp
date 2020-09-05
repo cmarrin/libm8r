@@ -37,7 +37,7 @@ public:
 
 extern "C" void app_main()
 {
-    m8r::Application application;
+    m8r::Application application(m8r::Application::HeartbeatType::Status, "/sys/bin", 23);
     application.runAutostartTask(m8r::SharedPtr<Sample>(new Sample()));
 
     while(1) {

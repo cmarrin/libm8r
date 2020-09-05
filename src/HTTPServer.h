@@ -26,7 +26,7 @@ public:
     class Request;
     
     enum class Method { ANY, GET, PUT, POST, DELETE };
-    using RequestFunction = std::function<void(const String& uri, const String& suffix, const Request&, int16_t connectionId)>;
+    using RequestFunction = std::function<String(const String& uri, const String& suffix, const Request&, int16_t connectionId)>;
     
     // Parsed HTTP Request
     //
@@ -41,6 +41,31 @@ public:
         Map<String, String> params;     // First line: key/value pairs of params
         Map<String, String> headers;    // Next lines: each header as key/value pair 
         bool valid = false;
+        
+        String toString() const
+        {
+            String s("Method: ");
+            switch(method) {
+                case Method::ANY:       s += "ANY"; break;
+                case Method::GET:       s += "GET"; break;
+                case Method::PUT:       s += "PUT"; break;
+                case Method::POST:      s += "POST"; break;
+                case Method::DELETE:    s += "DELETE"; break;
+            }
+            s += "\nPath:'";
+            s += path;
+            s += "\nParams: { ";
+            bool first = true;
+            for (auto it : params) {
+                if (!first) {
+                    s += ", ";
+                }
+                first = false;
+                s += String::format("'%s':'%s'", it.key.c_str(), it.value.c_str());
+            }
+            s += " }\n";
+            return s;
+        }
     };
     
     HTTPServer(uint16_t port, const char* rootDir, bool dirAccess = true);

@@ -56,6 +56,13 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
         _webServer = std::make_unique<HTTPServer>(80, webServerRoot);
         _webServer->on("/", "index.html");
         _webServer->on("/favicon.ico", "favicon.ico");
+        _webServer->on("/rest/v1/", [](const String& uri, const String& suffix, const HTTPServer::Request& request, int16_t connectionId)
+        {
+            if (suffix == "getSSIDList") {
+                return String("[\"marrin\", \"foo\", \"bar\"]");
+            }
+            return String();
+        });
     }
 
     if (shellPort != 0) {
