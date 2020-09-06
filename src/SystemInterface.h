@@ -65,6 +65,9 @@ public:
     virtual Mad<TCP> createTCP(uint16_t port, IPAddr ip, TCP::EventFunction) = 0;
     virtual Mad<TCP> createTCP(uint16_t port, TCP::EventFunction) = 0;
     virtual Mad<UDP> createUDP(uint16_t port, UDP::EventFunction) = 0;
+
+    virtual Vector<String> ssidList() const = 0;
+    virtual String currentSSID() const = 0;
     
     TaskManager* taskManager() { return &_taskManager; };
 
@@ -94,7 +97,7 @@ public:
         }
         return _scriptingLanguages[i];
     }
-
+    
 protected:
     SystemInterface();
 

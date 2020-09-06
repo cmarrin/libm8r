@@ -66,6 +66,9 @@ public:
         return udp;
     }
 
+    virtual Vector<String> ssidList() const override { return { "marrin", "foo", "baz" }; }
+    virtual String currentSSID() const override { return "marrin"; }
+
 private:
     GPIOInterface _gpio;
     LittleFS _fileSystem;

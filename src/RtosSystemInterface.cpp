@@ -77,6 +77,10 @@ public:
         return Mad<UDP>();
     }
     
+    // FIXME: Make  these real
+    virtual Vector<String> ssidList() const override { return { "marrin", "foo", "baz" }; }
+    virtual String currentSSID() const override { return "marrin"; }
+
 private:
     RtosGPIOInterface _gpio;
     LittleFS _fileSystem;
