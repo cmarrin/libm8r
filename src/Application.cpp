@@ -10,6 +10,7 @@
 #include "Application.h"
 
 #include "HTTPServer.h"
+#include "JSON.h"
 #include "MFS.h"
 #include "Shell.h"
 #include "StringStream.h"
@@ -59,7 +60,15 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
         _webServer->on("/rest/v1/", [](const String& uri, const String& suffix, const HTTPServer::Request& request, int16_t connectionId)
         {
             if (suffix == "getSSIDList") {
-                return String("[\"marrin\", \"foo\", \"bar\"]");
+                Vector<String> ssidList = system()->ssidList();
+                
+                JSON json;
+                return json.stringify(ssidList);
+            } else if (suffix == "getCurrentSSID") {
+                String ssid = system()->currentSSID();
+                
+                JSON json;
+                return json.stringify(ssid);
             }
             return String();
         });
