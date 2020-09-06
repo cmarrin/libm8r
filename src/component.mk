@@ -17,6 +17,7 @@ COMPONENT_OBJS := \
     Executable.o \
     HTTPServer.o \
     IPAddr.o \
+    JSON.o \
     Mallocator.o \
     MFS.o \
     MString.o \

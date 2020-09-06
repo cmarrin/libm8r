@@ -38,6 +38,7 @@
 		491B939024EDE8130078A2B9 /* MacUDP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49E1907A1DBAE2570030DC89 /* MacUDP.cpp */; };
 		491B939324EDE8690078A2B9 /* Shell.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B939124EDE8690078A2B9 /* Shell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		491B939424EDE8690078A2B9 /* Shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 491B939224EDE8690078A2B9 /* Shell.cpp */; };
+		49736EE52505453700B0A09E /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49736EE32505453700B0A09E /* JSON.cpp */; };
 		49846006238C60ED001F4FD4 /* MacSystemInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 49846004238C60ED001F4FD4 /* MacSystemInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6883424F9C9B500EECD46 /* Application.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931624ECADA90078A2B9 /* Application.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6883524F9C9CA00EECD46 /* Atom.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931324ECADA80078A2B9 /* Atom.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -167,6 +168,8 @@
 		49736EDC250081A000B0A09E /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = favicon.ico; path = ../web/favicon.ico; sourceTree = "<group>"; };
 		49736EDD250081A000B0A09E /* gwd_workspace.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = gwd_workspace.json; path = ../web/gwd_workspace.json; sourceTree = "<group>"; };
 		49736EDE250081A000B0A09E /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../web/index.html; sourceTree = "<group>"; };
+		49736EE22505453600B0A09E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = ../src/JSON.h; sourceTree = "<group>"; };
+		49736EE32505453700B0A09E /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = ../src/JSON.cpp; sourceTree = "<group>"; };
 		497DC63423A5771A00748031 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = ../esp/Makefile; sourceTree = "<group>"; };
 		497DC63623A5835100748031 /* component.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = component.mk; path = ../esp/main/component.mk; sourceTree = "<group>"; };
 		497DC63823A5849E00748031 /* sdkconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdkconfig; path = ../esp/sdkconfig; sourceTree = "<group>"; };
@@ -235,6 +238,8 @@
 				491B930724ECADA70078A2B9 /* HTTPServer.h */,
 				491B92E724ECADA50078A2B9 /* IPAddr.cpp */,
 				491B92E524ECADA40078A2B9 /* IPAddr.h */,
+				49736EE32505453700B0A09E /* JSON.cpp */,
+				49736EE22505453600B0A09E /* JSON.h */,
 				491B92EB24ECADA50078A2B9 /* Mallocator.cpp */,
 				491B92F124ECADA50078A2B9 /* Mallocator.h */,
 				491B92EC24ECADA50078A2B9 /* MFS.cpp */,
@@ -513,6 +518,7 @@
 				491B937424EDE3340078A2B9 /* Application.cpp in Sources */,
 				491B937C24EDE3340078A2B9 /* IPAddr.cpp in Sources */,
 				491B937124EDE31D0078A2B9 /* lfs_util.c in Sources */,
+				49736EE52505453700B0A09E /* JSON.cpp in Sources */,
 				491B938124EDE3340078A2B9 /* MUDP.cpp in Sources */,
 				491B937E24EDE3340078A2B9 /* Mallocator.cpp in Sources */,
 				491B937824EDE3340078A2B9 /* Error.cpp in Sources */,
