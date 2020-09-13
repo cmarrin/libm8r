@@ -22,6 +22,9 @@ public:
     RtosWifi() { }
     void start();
 
+    const Vector<String>& scanForNetworks() const;
+    String ssid() const;
+    
 private:
     enum class State { InitialTry, Scan, ConnectAP, Retry, Failed };
     
@@ -29,8 +32,6 @@ private:
     
     bool waitForConnect();
     void connectToSTA(const char* ssid, const char* pwd);
-    void scanForNetworks();
-    
     // Setup a wifi connection by starting an AP and presenting
     // a webpage with SSID choices and the ability to enter a
     // password
@@ -39,7 +40,7 @@ private:
     State _state = State::InitialTry;
     EventGroupHandle_t _eventGroup;
     
-    Vector<String> _ssidList;
+    mutable Vector<String> _ssidList;
 };
 
 }

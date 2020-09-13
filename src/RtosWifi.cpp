@@ -17,8 +17,6 @@
 
 using namespace m8r;
 
-static bool SetupTestSTAConnection = false;
-
 // Wait a total of 10 seconds to connect
 static m8r::Duration WiFiConnectWaitDuration = 500ms;
 static int WiFiConnectWaitCycles = 20;
@@ -111,19 +109,22 @@ void RtosWifi::connectToSTA(const char* ssid, const char* pwd)
     ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &config));
 }
 
-void RtosWifi::scanForNetworks()
+const Vector<String>& RtosWifi::scanForNetworks() const
 {
+    _ssidList.clear();
     wifi_scan_config_t config;
     memset(&config, 0, sizeof(config));
     config.show_hidden = true;
     ESP_ERROR_CHECK(esp_wifi_scan_start(&config, true));
-    
-    // For now just print them out
-    printf("SSID List:\n");
-    for (const auto& it : _ssidList) {
-        printf("    '%s'\n", it.c_str());
-    }
-    printf("====\n");
+    printf("***** Finished network scan: %d networks found\n", _ssidList.size());
+    return _ssidList;
+}
+
+String RtosWifi::ssid() const
+{
+    wifi_ap_record_t record;
+    ESP_ERROR_CHECK(esp_wifi_sta_get_ap_info(&record));
+    return record.ssid;
 }
 
 bool RtosWifi::setupConnection(const char* name)
@@ -158,15 +159,6 @@ void RtosWifi::start()
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_start());
 
-    if (SetupTestSTAConnection) {
-        // Make a connection for testing
-        wifi_config_t config;
-        memset(&config, 0, sizeof(config));
-        strcpy(reinterpret_cast<char*>(config.sta.ssid), "marrin");
-        strcpy(reinterpret_cast<char*>(config.sta.password), "orion741");
-        ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &config));
-    }
-    
     // Wait for IP address
     printf("** Waiting for WiFi to connect...\n");
     if (!waitForConnect()) {

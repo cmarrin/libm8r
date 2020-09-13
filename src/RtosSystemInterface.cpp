@@ -77,9 +77,15 @@ public:
         return Mad<UDP>();
     }
     
-    // FIXME: Make  these real
-    virtual Vector<String> ssidList() const override { return { "marrin", "foo", "baz" }; }
-    virtual String currentSSID() const override { return "marrin"; }
+    virtual Vector<String> ssidList() const override
+    {
+        return _wifi.scanForNetworks();
+    }
+    
+    virtual String currentSSID() const override
+    {
+        return _wifi.ssid();
+    }
 
 private:
     RtosGPIOInterface _gpio;
