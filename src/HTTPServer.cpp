@@ -208,7 +208,7 @@ HTTPServer::HTTPServer(uint16_t port, const char* rootDir, bool dirAccess)
 void HTTPServer::sendResponseHeader(int16_t connectionId, uint32_t size)
 {
     // This is for a valid response
-    String s = String::format("HTTP/1.1 200 OK\r\nDate: %s\r\nContent-Length: %d\r\nContent-Type: text/html\r\n\r\n",
+    String s = String::format("HTTP/1.0 200 OK\r\nDate: %s\r\nContent-Length: %d\r\nContent-Type: text/html\r\n\r\n",
                                  dateString().c_str(), size);
     _socket->send(connectionId, s.c_str());
 }

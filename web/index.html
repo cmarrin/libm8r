@@ -160,7 +160,8 @@
         
         function getREST(functionName, func)
         {
-            fetch("http://localhost/rest/v1/" + functionName)
+            console.log("******** URL='" + document.URL + "'");
+            fetch(document.URL + "rest/v1/" + functionName)
                 .then(response => response.json())
                 .then(data => func(data));
         }
