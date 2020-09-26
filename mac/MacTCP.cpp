@@ -28,7 +28,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
     if (_socketFD == -1) {
         {
             std::unique_lock<std::mutex> lock(_mutex);
-            addEvent(TCP::Event::Error, errno, "opening TCP socket");
+            addEvent(TCP::Event::Error, -1, "opening TCP socket");
         }
         return;
     }
@@ -37,7 +37,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
     if (setsockopt(_socketFD, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) {
         {
             std::unique_lock<std::mutex> lock(_mutex);
-            addEvent(TCP::Event::Error, errno, "opening TCP socket, setsockopt failed");
+            addEvent(TCP::Event::Error, -1, "opening TCP socket, setsockopt failed");
         }
         return;
     }
@@ -55,7 +55,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
         if (bind(_socketFD, (struct sockaddr *)&sa, sizeof sa) == -1) {
             {
                 std::unique_lock<std::mutex> lock(_mutex);
-                addEvent(TCP::Event::Error, errno, "TCP bind failed");
+                addEvent(TCP::Event::Error, -1, "TCP bind failed");
             }
             ::close(_socketFD);
             _socketFD = -1;
@@ -65,7 +65,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
         if (listen(_socketFD, MaxConnections) == -1) {
             {
                 std::unique_lock<std::mutex> lock(_mutex);
-                addEvent(TCP::Event::Error, errno, "TCP listen failed");
+                addEvent(TCP::Event::Error, -1, "TCP listen failed");
             }
             ::close(_socketFD);
             _socketFD = -1;
@@ -77,7 +77,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
         if (connect(_socketFD, (struct sockaddr *) &sa, sizeof(sa)) < 0) {
             {
                 std::unique_lock<std::mutex> lock(_mutex);
-                addEvent(TCP::Event::Error, errno, "TCP connect failed");
+                addEvent(TCP::Event::Error, -1, "TCP connect failed");
             }
         } else {
             {
@@ -124,7 +124,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
                     if (clientSocket < 0) {
                         {
                             std::unique_lock<std::mutex> lock(_mutex);
-                            addEvent(TCP::Event::Error, errno, "accept failed");
+                            addEvent(TCP::Event::Error, -1, "accept failed");
                         }
                         continue;
                     }
@@ -174,7 +174,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
                         } else if (result < 0) {
                             {
                                 std::unique_lock<std::mutex> lock(_mutex);
-                                addEvent(TCP::Event::Error, errno, "read error");
+                                addEvent(TCP::Event::Error, connectionId, "read error");
                             }
                         } else {
                             {
@@ -200,7 +200,7 @@ void MacTCP::init(uint16_t port, IPAddr ip, EventFunction func)
                 } else if (result < 0) {
                     {
                         std::unique_lock<std::mutex> lock(_mutex);
-                        addEvent(TCP::Event::Error, errno, "read failed");
+                        addEvent(TCP::Event::Error, -1, "read failed");
                     }
                 } else {
                     {

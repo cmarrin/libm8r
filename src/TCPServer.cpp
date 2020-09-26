@@ -25,7 +25,7 @@ TCPServer::TCPServer(uint16_t port, CreateTaskFunction createTaskFunction, TCP::
 {
     Mad<TCP> socket = system()->createTCP(port, [this](TCP* tcp, TCP::Event event, int16_t connectionId, const char* data, int16_t length)
     {
-        if (connectionId < 0 || connectionId >= TCP::MaxConnections) {
+        if (event != TCP::Event::Error && (connectionId < 0 || connectionId >= TCP::MaxConnections)) {
             system()->printf("******** TCPServer Internal Error: Invalid connectionId = %d\n", connectionId);
             _socket->disconnect(connectionId);
             return;
@@ -86,7 +86,11 @@ TCPServer::TCPServer(uint16_t port, CreateTaskFunction createTaskFunction, TCP::
             case TCP::Event::SentData:
                 break;
             case TCP::Event::Error:
-                system()->printf("******** TCPServer Error for connectionId = %d (%s)\n", connectionId, data);
+                if (connectionId >= 0) {
+                    system()->printf("******** TCPServer Error for connectionId = %d (%s)\n", connectionId, data);
+                } else {
+                    system()->printf("******** TCPServer Error (%s)\n", data);
+                }
             default:
                 break;
         }
