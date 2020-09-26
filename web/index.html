@@ -32,13 +32,21 @@
         }
         ul {
             list-style-type: none;
+            padding: 10px;
+            margin: 0px;
         }
         li {
-            padding: 10px;
+            padding: 5px;
             overflow: auto;
         }
         li:hover {
             background: rgb(238, 238, 238);
+            cursor: pointer;
+        }
+        li.selected {
+            background: rgb(200, 200, 200);
+            padding: 4px;
+            border: 1px solid black;
             cursor: pointer;
         }
         .gwd-div-a4as {
@@ -62,7 +70,7 @@
         }
         .gwd-div-1z2g {
             position: absolute;
-            top: 131px;
+            top: 150px;
             left: 50%;
             transform-style: preserve-3d;
             height: 219px;
@@ -117,7 +125,7 @@
         }
         .gwd-div-116e {
             position: absolute;
-            top: 444px;
+            top: 470px;
             left: 50%;
             transform-style: preserve-3d;
             width: 322px;
@@ -184,7 +192,7 @@
             list.innerHTML = "";
             for (var i = 0; i < array.length; i++) {
                 console.log("****** array item='" + array[i] + "'");
-                var item = document.createElement('li');
+                var item = document.createElement('LI');
                 item.appendChild(document.createTextNode(array[i]));
                 list.appendChild(item);
             }
@@ -202,6 +210,44 @@
             getSSIDList();
         }
         
+        function selectNetworkEntry(e)
+        {
+            var selected;
+
+            if (e.target.tagName === 'LI') {
+                selected = document.querySelector('li.selected');
+                if (selected) {
+                    selected.className= '';
+                }
+                e.target.className= 'selected';
+            }
+        }
+        
+        function passwordKeypress(e)
+        {
+            if (e.keyCode == 13) {
+                // Get the password
+                var password = document.getElementById('password').value;
+                var selected = document.querySelector('li.selected');
+                if (!selected) {
+                    // FIXME: Show error
+                    return;
+                }
+                
+                connectToNetwork(selected.innerHTML, password);
+            }
+        }
+        
+        function connectToNetwork(ssid, password)
+        {
+            // FIXME: Implement
+            // FIXME: handle errors (empty SSID, etc.)
+            var ssidSpan = document.getElementById('currentSSID');
+            ssidSpan.textContent = "Attempting to connect to '" + ssid + "'...";
+            console.log("****** connectToNetwork('" + ssid + "', '" + password + "')");
+            
+        }
+        
     </script>
 </head>
 
@@ -211,17 +257,18 @@
     </div>
     <div class="gwd-div-v612">
         <span class="gwd-span-1cpw">Current network:</span>
-        <span id="currentSSID" class="gwd-span-tyz5"></span></div>
+        <span id="currentSSID" class="gwd-span-tyz5"></span>
+    </div>
     <div class="gwd-div-1z2g">
         <span class="gwd-span-kcc6">Available Networks</span>
-        <button class="gwd-button-m68i" type="submit" onclick="loadComplete()">Refresh</button>
+        <button class="gwd-button-m68i" type="submit" onclick="refreshNetworks()">Refresh</button>
         <div class="gwd-div-k6bn">
-            <ul id="ssidList"> </ul>
+            <ul id="ssidList" onclick="selectNetworkEntry(event)"> </ul>
         </div>
     </div>
     <div class="gwd-div-116e">
         <span class="gwd-span-1c6z">Password:</span>
-        <input type="password" class="gwd-input-dzwd" placeholder="password">
+        <input id="password" type="password" class="gwd-input-dzwd" placeholder="password" onkeypress="passwordKeypress(event)">
     </div>
 </body>
 
