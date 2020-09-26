@@ -154,8 +154,7 @@
     <script>
         function loadComplete()
         {
-            getCurrentSSID();
-            getSSIDList();
+            refreshNetworks();
         }
         
         function getREST(functionName, func)
@@ -168,12 +167,15 @@
         
         function getSSIDList()
         {
+            var list = document.getElementById('ssidList');
+            list.innerHTML = "Refreshing...";
             getREST('getSSIDList', updateSSIDList);
         }
         
         function getCurrentSSID()
         {
-            getREST('getCurrentSSID', updateCurrentSSID);
+            setCurrentSSIDString("Refreshing...");
+            getREST('getCurrentSSID', setCurrentSSIDString);
         }
 
         function updateSSIDList(array)
@@ -188,11 +190,18 @@
             }
         }
         
-        function updateCurrentSSID(ssid)
+        function setCurrentSSIDString(s)
         {
             var ssidSpan = document.getElementById('currentSSID');
-            ssidSpan.textContent = ssid;
+            ssidSpan.textContent = s;
         }
+        
+        function refreshNetworks()
+        {
+            getCurrentSSID();
+            getSSIDList();
+        }
+        
     </script>
 </head>
 
