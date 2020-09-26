@@ -44,7 +44,7 @@ void RtosTCP::serverTask()
     _socketFD = socket(AF_INET, SOCK_STREAM, IPPROTO_IP);
     if (_socketFD < 0) {
         ESP_LOGE("TCP", "Unable to create socket: errno %d", errno);
-        addEvent(TCP::Event::Error, errno, "opening TCP socket");
+        addEvent(TCP::Event::Error, -1, "opening TCP socket");
         return;
     }
     ESP_LOGI("TCP", "Socket created");
@@ -58,7 +58,7 @@ void RtosTCP::serverTask()
     int err = bind(_socketFD, (struct sockaddr *)&sa, sizeof(sa));
     if (err != 0) {
         ESP_LOGE("TCP", "Socket unable to bind: errno %d", errno);
-        addEvent(TCP::Event::Error, errno, "TCP bind failed");
+        addEvent(TCP::Event::Error, -1, "TCP bind failed");
         close(_socketFD);
         _socketFD = -1;
         return;
@@ -68,7 +68,7 @@ void RtosTCP::serverTask()
     err = listen(_socketFD, 1);
     if (err != 0) {
         ESP_LOGE("TCP", "Error occured during listen: errno %d", errno);
-        addEvent(TCP::Event::Error, errno, "TCP listen failed");
+        addEvent(TCP::Event::Error, -1, "TCP listen failed");
         close(_socketFD);
         _socketFD = -1;
         return;
@@ -111,7 +111,7 @@ void RtosTCP::serverTask()
             int clientSocket = accept(_socketFD, (struct sockaddr *)&sa, &addrLen);
             if (clientSocket < 0) {
                 ESP_LOGE("TCP", "Unable to accept connection: errno %d", errno);
-                addEvent(TCP::Event::Error, errno, "accept failed");
+                addEvent(TCP::Event::Error, -1, "accept failed");
                 continue;
             }
 
@@ -149,7 +149,7 @@ void RtosTCP::serverTask()
                 } else if (result < 0) {
                     // Error occured during receiving
                     ESP_LOGE("TCP", "read failed: id=%d, socket=%d, len=%d, errno=%d", connectionId, _clientSockets[connectionId], result, errno);
-                    addEvent(TCP::Event::Error, errno, "read error");
+                    addEvent(TCP::Event::Error, connectionId, "read error");
                 }
                 else {
                     addEvent(TCP::Event::ReceivedData, connectionId, _receiveBuffer, static_cast<int32_t>(result));

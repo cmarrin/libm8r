@@ -66,6 +66,9 @@ static void parseRequest(const String& s, HTTPServer::Request& request)
 {
     // Split into lines
     Vector<String> lines = s.split("\n");
+    if (lines.empty()) {
+        return;
+    }
     
     // Handle method line
     Vector<String> line = lines[0].split(" ");
@@ -188,8 +191,8 @@ HTTPServer::HTTPServer(uint16_t port, const char* rootDir, bool dirAccess)
                 }
 
                 if (!handled) {
-                    system()->printf("******** HTTPServer Error: no %s method handler for uri '%s'\n",
-                                            toString(req.method).c_str(), req.path.c_str());
+                    system()->printf("******** HTTPServer Error: no %s method handler for uri '%s' (connectionId=%d)\n",
+                                            toString(req.method).c_str(), req.path.c_str(), connectionId);
                 }
                 break;
             }
@@ -197,6 +200,7 @@ HTTPServer::HTTPServer(uint16_t port, const char* rootDir, bool dirAccess)
                 break;
             case TCP::Event::Error:
                 system()->printf("******** HTTPServer Error: code=%d (%s)\n", connectionId, data);
+                _socket->disconnect(connectionId);
             default:
                 break;
         }
