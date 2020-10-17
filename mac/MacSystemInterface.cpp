@@ -68,6 +68,10 @@ public:
 
     virtual Vector<String> ssidList() const override { return { "marrin", "foo", "baz" }; }
     virtual String currentSSID() const override { return "marrin"; }
+    virtual void setSSID(const String& ssid, const String& password) override
+    {
+        printf("******** Setting SSID('%s', '%s')\n", ssid.c_str(), password.c_str());
+    }
 
 private:
     GPIOInterface _gpio;

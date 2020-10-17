@@ -68,6 +68,7 @@ public:
 
     virtual Vector<String> ssidList() const = 0;
     virtual String currentSSID() const = 0;
+    virtual void setSSID(const String& ssid, const String& password) = 0;
     
     TaskManager* taskManager() { return &_taskManager; };
 

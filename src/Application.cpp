@@ -56,18 +56,22 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
         _webServer->on("/favicon.ico", "favicon.ico");
         _webServer->on("/rest/v1/", [](const String& uri, const String& suffix, const HTTPServer::Request& request, int16_t connectionId)
         {
+            JSON json;
+            
             if (suffix == "getSSIDList") {
                 Vector<String> ssidList = system()->ssidList();
-                
-                JSON json;
                 return json.stringify(ssidList);
             } else if (suffix == "getCurrentSSID") {
                 String ssid = system()->currentSSID();
+                return json.stringify(ssid);
+            } else if (suffix == "setSSID") {
+                String ssid = request.params.find("ssid")->value;
+                String password = request.params.find("password")->value;
+                system()->setSSID(ssid, password);
                 
-                JSON json;
                 return json.stringify(ssid);
             }
-            return String();
+            return json.stringify("*** unimplemented ***");
         });
     }
 

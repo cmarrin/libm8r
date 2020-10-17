@@ -86,6 +86,11 @@ public:
     {
         return _wifi.ssid();
     }
+    
+    virtual void setSSID(const String& ssid, const String& password) override
+    {
+        _wifi.connectToSTA(ssid.c_str(), password.c_str());
+    }
 
 private:
     RtosGPIOInterface _gpio;

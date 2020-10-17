@@ -24,6 +24,7 @@ public:
 
     const Vector<String>& scanForNetworks() const;
     String ssid() const;
+    void connectToSTA(const char* ssid, const char* pwd);
     
 private:
     enum class State { InitialTry, Scan, ConnectAP, Retry, Failed };
@@ -31,7 +32,6 @@ private:
     static esp_err_t eventHandler(void* ctx, system_event_t*);
     
     bool waitForConnect();
-    void connectToSTA(const char* ssid, const char* pwd);
     // Setup a wifi connection by starting an AP and presenting
     // a webpage with SSID choices and the ability to enter a
     // password

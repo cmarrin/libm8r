@@ -41,6 +41,8 @@ esp_err_t RtosWifi::eventHandler(void* ctx, system_event_t* event)
     }
     
     case SYSTEM_EVENT_STA_START:
+    case SYSTEM_EVENT_AP_START:
+        printf("***** %s start:%d\n", (event->event_id == SYSTEM_EVENT_STA_START) ? "STA" : "AP", int(self->_state));
         if (self->_state == State::InitialTry || self->_state == State::Retry) {
             esp_wifi_connect();
         }
@@ -84,6 +86,7 @@ esp_err_t RtosWifi::eventHandler(void* ctx, system_event_t* event)
                  event->event_info.sta_disconnected.aid);
         break;
     default:
+        printf("***** GOT EVENT %d\n", int(event->event_id));
         break;
     }
     return ESP_OK;
@@ -106,6 +109,7 @@ void RtosWifi::connectToSTA(const char* ssid, const char* pwd)
     memset(&config, 0, sizeof(config));
     strcpy(reinterpret_cast<char*>(config.sta.ssid), ssid);
     strcpy(reinterpret_cast<char*>(config.sta.password), pwd);
+    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_STA, &config));
 }
 
@@ -139,9 +143,7 @@ bool RtosWifi::setupConnection(const char* name)
     ESP_ERROR_CHECK(esp_wifi_set_config(ESP_IF_WIFI_AP, &config));
     ESP_ERROR_CHECK(esp_wifi_start());
     printf("***** Started AP named '%s'\n", name);
-    
-    // FIXME: Now start a webserver and wait for a network to be setup
-    return false;
+    return true;
 }
 
 void RtosWifi::start()
@@ -154,6 +156,8 @@ void RtosWifi::start()
 
     wifi_init_config_t initConfig = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&initConfig));
+    
+    //connectToSTA("marrin", "orion741");
     
     // First try to connect to the existing STA
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
