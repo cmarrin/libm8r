@@ -40,6 +40,8 @@ private:
     State _state = State::InitialTry;
     EventGroupHandle_t _eventGroup;
     
+    uint32_t _reconnectTries = 0;
+    
     mutable Vector<String> _ssidList;
 };
 

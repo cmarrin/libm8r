@@ -10,7 +10,11 @@
 #include "RtosWifi.h"
 
 #include "esp_event_loop.h"
+#include "esp_smartconfig.h"
+#include "smartconfig_ack.h"
+#include "esp_log.h"
 #include "MString.h"
+#include "SystemInterface.h"
 #include "SystemTime.h"
 #include <nvs_flash.h>
 #include <cstring>
@@ -20,8 +24,74 @@ using namespace m8r;
 // Wait a total of 10 seconds to connect
 static m8r::Duration WiFiConnectWaitDuration = 500ms;
 static int WiFiConnectWaitCycles = 20;
+static uint32_t ReconnectTries = 5;
 
 static constexpr int IPV4_GOTIP_BIT = BIT0;
+
+static EventGroupHandle_t smartconfigEventGroup;
+static const int ESPTOUCH_DONE_BIT = BIT1;
+static const char *TAG = "sc";
+static void sc_callback(smartconfig_status_t status, void *pdata)
+{
+    switch (status) {
+        case SC_STATUS_WAIT:
+            ESP_LOGI(TAG, "SC_STATUS_WAIT");
+            break;
+        case SC_STATUS_FIND_CHANNEL:
+            ESP_LOGI(TAG, "SC_STATUS_FINDING_CHANNEL");
+            break;
+        case SC_STATUS_GETTING_SSID_PSWD:
+            ESP_LOGI(TAG, "SC_STATUS_GETTING_SSID_PSWD");
+            break;
+        case SC_STATUS_LINK: {
+            ESP_LOGI(TAG, "SC_STATUS_LINK");
+            wifi_config_t *wifi_config = reinterpret_cast<wifi_config_t*>(pdata);
+            ESP_LOGI(TAG, "SSID:%s", wifi_config->sta.ssid);
+            ESP_LOGI(TAG, "PASSWORD:%s", wifi_config->sta.password);
+            ESP_ERROR_CHECK( esp_wifi_disconnect() );
+            ESP_ERROR_CHECK( esp_wifi_set_config(ESP_IF_WIFI_STA, wifi_config) );
+            ESP_ERROR_CHECK( esp_wifi_connect() );
+            break;
+        }
+        case SC_STATUS_LINK_OVER:
+            ESP_LOGI(TAG, "SC_STATUS_LINK_OVER");
+            if (pdata != NULL) {
+                sc_callback_data_t *sc_callback_data = (sc_callback_data_t *)pdata;
+                switch (sc_callback_data->type) {
+                    case SC_ACK_TYPE_ESPTOUCH:
+                        ESP_LOGI(TAG, "Phone ip: %d.%d.%d.%d", sc_callback_data->ip[0], sc_callback_data->ip[1], sc_callback_data->ip[2], sc_callback_data->ip[3]);
+                        ESP_LOGI(TAG, "TYPE: ESPTOUCH");
+                        break;
+                    case SC_ACK_TYPE_AIRKISS:
+                        ESP_LOGI(TAG, "TYPE: AIRKISS");
+                        break;
+                    default:
+                        ESP_LOGE(TAG, "TYPE: ERROR");
+                        break;
+                }
+            }
+            xEventGroupSetBits(smartconfigEventGroup, ESPTOUCH_DONE_BIT);
+            break;
+        default:
+            break;
+    }
+}
+
+static void smartconfigTask(void* parm)
+{
+    smartconfigEventGroup = xEventGroupCreate();
+    EventBits_t uxBits;
+    ESP_ERROR_CHECK( esp_smartconfig_set_type(SC_TYPE_ESPTOUCH_AIRKISS) );
+    ESP_ERROR_CHECK( esp_smartconfig_start(sc_callback) );
+    while (1) {
+        uxBits = xEventGroupWaitBits(smartconfigEventGroup, ESPTOUCH_DONE_BIT, true, false, portMAX_DELAY); 
+        if(uxBits & ESPTOUCH_DONE_BIT) {
+            ESP_LOGI(TAG, "smartconfig over");
+            esp_smartconfig_stop();
+            vTaskDelete(NULL);
+        }
+    }
+}
 
 esp_err_t RtosWifi::eventHandler(void* ctx, system_event_t* event)
 {
@@ -50,11 +120,18 @@ esp_err_t RtosWifi::eventHandler(void* ctx, system_event_t* event)
     case SYSTEM_EVENT_STA_GOT_IP:
         xEventGroupSetBits(self->_eventGroup, IPV4_GOTIP_BIT);
         printf("***** got ip:%s\n", ip4addr_ntoa(&event->event_info.got_ip.ip_info.ip));
+        system()->addEvent(SystemInterface::Event::NetworkStarted);
         break;
     case SYSTEM_EVENT_STA_DISCONNECTED: {
         system_event_sta_disconnected_t *disconnected = &event->event_info.disconnected;
-        printf("***** WiFi disconnected, ssid:%s, ssid_len:%d, bssid:" MACSTR ", reason:%d\n",
-            disconnected->ssid, disconnected->ssid_len, MAC2STR(disconnected->bssid), disconnected->reason);
+        printf("***** WiFi disconnected, ssid:%s, bssid:" MACSTR ", reason:%d\n",
+            disconnected->ssid, MAC2STR(disconnected->bssid), disconnected->reason);
+        
+        if (++self->_reconnectTries > ReconnectTries) {
+            printf("***** Too many WiFi retry attempts, starting Smart Config.\n");
+            xTaskCreate(smartconfigTask, "smartconfigTask", 4096, NULL, 3, NULL);
+            break;
+        }
         
         if (self->_state != State::InitialTry && self->_state != State::Retry) {
             break;
@@ -156,30 +233,28 @@ void RtosWifi::start()
 
     wifi_init_config_t initConfig = WIFI_INIT_CONFIG_DEFAULT();
     ESP_ERROR_CHECK(esp_wifi_init(&initConfig));
-    
-    //connectToSTA("marrin", "orion741");
-    
+        
     // First try to connect to the existing STA
     ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
     ESP_ERROR_CHECK(esp_wifi_start());
-
-    // Wait for IP address
-    printf("** Waiting for WiFi to connect...\n");
-    if (!waitForConnect()) {
-        // Failed to connect, scan
-        _state = State::Scan;
-        esp_wifi_disconnect();
-        scanForNetworks();
-        
-        // Setup Network
-        if (!setupConnection("MyCoolESPAP")) {
-            esp_wifi_disconnect();
-            esp_wifi_stop();
-            esp_wifi_deinit();
-            printf("***** ERROR: WiFi failed to connect, disabling.\n");
-            return;
-        }
-    }
-    
-    printf("***** WiFi connected.\n");
+//
+//    // Wait for IP address
+//    printf("** Waiting for WiFi to connect...\n");
+//    if (!waitForConnect()) {
+//        // Failed to connect, scan
+//        _state = State::Scan;
+//        esp_wifi_disconnect();
+//        scanForNetworks();
+//        
+//        // Setup Network
+//        if (!setupConnection("MyCoolESPAP")) {
+//            esp_wifi_disconnect();
+//            esp_wifi_stop();
+//            esp_wifi_deinit();
+//            printf("***** ERROR: WiFi failed to connect, disabling.\n");
+//            return;
+//        }
+//    }
+//    
+//    printf("***** WiFi connected.\n");
 }
