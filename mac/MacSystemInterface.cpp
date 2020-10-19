@@ -66,6 +66,7 @@ public:
         return udp;
     }
 
+    virtual void startNetwork() override { addEvent(Event::NetworkStarted); }
     virtual Vector<String> ssidList() const override { return { "marrin", "foo", "baz" }; }
     virtual String currentSSID() const override { return "marrin"; }
     virtual void setSSID(const String& ssid, const String& password) override

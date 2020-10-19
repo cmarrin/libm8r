@@ -42,47 +42,18 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
     }
 
     system()->init();
+    
+    _webServerRoot = webServerRoot;
+    _shellPort = shellPort;
+    if (!_webServerRoot.empty() || _shellPort != 0) {
+        system()->startNetwork();
+    }
 
     if (heartbeatType == HeartbeatType::Status) {
         system()->setHeartrate(3s);
     }
     
     mountFileSystem();
-
-    if (webServerRoot != nullptr) {
-        // Setup test web server
-        _webServer = std::make_unique<HTTPServer>(80, webServerRoot);
-        _webServer->on("/", "index.html");
-        _webServer->on("/favicon.ico", "favicon.ico");
-        _webServer->on("/rest/v1/", [](const String& uri, const String& suffix, const HTTPServer::Request& request, int16_t connectionId)
-        {
-            JSON json;
-            
-            if (suffix == "getSSIDList") {
-                Vector<String> ssidList = system()->ssidList();
-                return json.stringify(ssidList);
-            } else if (suffix == "getCurrentSSID") {
-                String ssid = system()->currentSSID();
-                return json.stringify(ssid);
-            } else if (suffix == "setSSID") {
-                String ssid = request.params.find("ssid")->value;
-                String password = request.params.find("password")->value;
-                system()->setSSID(ssid, password);
-                
-                return json.stringify(ssid);
-            }
-            return json.stringify("*** unimplemented ***");
-        });
-    }
-
-    if (shellPort != 0) {
-        _terminal = std::make_unique<Terminal>(shellPort, [this]()
-        {
-            SharedPtr<Task> task(new Task());
-            task->load(SharedPtr<Shell>(new Shell()));
-            return task;
-        });
-    }
 
     // Start things running
     system()->printf("\n*** m8rscript v%d.%d - %s\n", MajorVersion, MinorVersion, __TIMESTAMP__);
@@ -93,6 +64,11 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
         uint32_t totalUsed = m8r::system()->fileSystem()->totalUsed();
         m8r::system()->printf("Filesystem - total size:%sB, used:%sB\n", String::prettySize(totalSize, 1, true).c_str(), String::prettySize(totalUsed, 1, true).c_str());
     }
+}
+
+Application::~Application()
+{
+    delete _system;
 }
 
 void Application::runAutostartTask(const char* filename)
@@ -133,9 +109,43 @@ void Application::runAutostartTaskHelper(const SharedPtr<Task>& task)
     });  
 }
 
-Application::~Application()
+void Application::startNetworkServers()
 {
-    delete _system;
+    if (!_webServerRoot.empty()) {
+        // Setup test web server
+        _webServer = std::make_unique<HTTPServer>(80, _webServerRoot.c_str());
+        _webServer->on("/", "index.html");
+        _webServer->on("/favicon.ico", "favicon.ico");
+        _webServer->on("/rest/v1/", [](const String& uri, const String& suffix, const HTTPServer::Request& request, int16_t connectionId)
+        {
+            JSON json;
+            
+            if (suffix == "getSSIDList") {
+                Vector<String> ssidList = system()->ssidList();
+                return json.stringify(ssidList);
+            } else if (suffix == "getCurrentSSID") {
+                String ssid = system()->currentSSID();
+                return json.stringify(ssid);
+            } else if (suffix == "setSSID") {
+                String ssid = request.params.find("ssid")->value;
+                String password = request.params.find("password")->value;
+                system()->setSSID(ssid, password);
+                
+                return json.stringify(ssid);
+            }
+            return json.stringify("*** unimplemented ***");
+        });
+    }
+
+    if (_shellPort != 0) {
+        _terminal = std::make_unique<Terminal>(_shellPort, [this]()
+        {
+            SharedPtr<Task> task(new Task());
+            task->load(SharedPtr<Shell>(new Shell()));
+            return task;
+        });
+    }
+
 }
 
 Application::NameValidationType Application::validateBonjourName(const char* name)
@@ -183,6 +193,21 @@ bool Application::mountFileSystem()
 
 bool Application::runOneIteration()
 {
+    while (true) {
+        SystemInterface::Event event = system()->nextEvent();
+        if (event == SystemInterface::Event::None) {
+            break;
+        }
+
+        switch(event) {
+            case SystemInterface::Event::NetworkStarted:
+                startNetworkServers();
+                break;
+            default:
+                break;
+        }
+    }
+    
     if (_terminal) {
         _terminal->handleEvents();
     }

@@ -40,6 +40,8 @@ class UDPDelegate;
 
 class SystemInterface  {
 public:
+    enum class Event { None, NetworkStarted };
+    
     static SystemInterface* create();
 
     virtual ~SystemInterface() { }
@@ -66,6 +68,7 @@ public:
     virtual Mad<TCP> createTCP(uint16_t port, TCP::EventFunction) = 0;
     virtual Mad<UDP> createUDP(uint16_t port, UDP::EventFunction) = 0;
 
+    virtual void startNetwork() = 0;
     virtual Vector<String> ssidList() const = 0;
     virtual String currentSSID() const = 0;
     virtual void setSSID(const String& ssid, const String& password) = 0;
@@ -99,6 +102,20 @@ public:
         return _scriptingLanguages[i];
     }
     
+    void addEvent(Event event) { _events.push_back(event); }
+    Event nextEvent(bool pop = true)
+    {
+        if (_events.empty()) {
+            return Event::None;
+        }
+        
+        Event event = _events.back();
+        if (pop) {
+            _events.pop_back();
+        }
+        return event;
+    }
+    
 protected:
     SystemInterface();
 
@@ -115,6 +132,8 @@ private:
     bool _heartOn = false;
     
     Vector<const ScriptingLanguage*> _scriptingLanguages;
+    
+    Vector<Event> _events;
 };
 
 SystemInterface* system();

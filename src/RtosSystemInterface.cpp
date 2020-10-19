@@ -41,7 +41,6 @@ class RtosSystemInterface : public SystemInterface
 public:
     RtosSystemInterface()
     {
-        _wifi.start();
     }
     
     ~RtosSystemInterface()
@@ -77,6 +76,11 @@ public:
         return Mad<UDP>();
     }
     
+    virtual void startNetwork() override
+    {
+        _wifi.start();
+    }
+
     virtual Vector<String> ssidList() const override
     {
         return _wifi.scanForNetworks();

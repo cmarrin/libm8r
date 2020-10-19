@@ -49,11 +49,15 @@ public:
 
 private:
     void runAutostartTaskHelper(const SharedPtr<Task>&);
+    void startNetworkServers();
     
     SharedPtr<Task> _autostartTask;
     std::unique_ptr<Terminal> _terminal;
     std::unique_ptr<HTTPServer> _webServer;
 
+    String _webServerRoot;
+    uint16_t _shellPort = 0;
+    
     static SystemInterface* _system;
 };
     
