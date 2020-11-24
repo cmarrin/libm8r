@@ -5,6 +5,8 @@
 
 CXXFLAGS += -std=c++14
 
+PROJECT_NAME := libm8r
+
 COMPONENT_ADD_INCLUDEDIRS := . littlefs
 COMPONENT_EXTRA_INCLUDES := 
 COMPONENT_SRCDIRS := . littlefs
