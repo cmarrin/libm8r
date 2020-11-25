@@ -9,12 +9,8 @@
 -------------------------------------------------------------------------*/
 
 #include "Application.h"
-#include "Defines.h"
-#include "Mallocator.h"
-#include "MStream.h"
-#include "SystemInterface.h"
-#include "SystemTime.h"
 
+static constexpr const char* WebServerRoot = "/sys/bin";
 static m8r::Duration MainTaskSleepDuration = 10ms;
 
 class Sample : public m8r::Executable
@@ -27,9 +23,13 @@ public:
     }
 };
 
-extern "C" void app_main()
+void m8rmain()
 {
-    m8r::Application application(m8r::Application::HeartbeatType::Status, "/sys/bin", 23);
+    m8r::Application application(m8r::Application::HeartbeatType::Status, WebServerRoot, 23);
+ 
+     // Upload files needed by web server
+    m8r::Application::uploadFiles({ "web/index.html", "web/favicon.ico" }, WebServerRoot);
+
     application.runAutostartTask(m8r::SharedPtr<Sample>(new Sample()));
 
     while(1) {

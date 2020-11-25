@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49192DE1256EE026001F3B1A /* m8rscript.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49F39AB024F871FC0019D831 /* m8rscript.cpp */; };
 		491B937124EDE31D0078A2B9 /* lfs_util.c in Sources */ = {isa = PBXBuildFile; fileRef = 491B936224ECADFB0078A2B9 /* lfs_util.c */; };
 		491B937224EDE31D0078A2B9 /* lfs.c in Sources */ = {isa = PBXBuildFile; fileRef = 491B936124ECADFB0078A2B9 /* lfs.c */; };
 		491B937324EDE31D0078A2B9 /* MLittleFS.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 491B936324ECADFB0078A2B9 /* MLittleFS.cpp */; };
@@ -72,7 +73,6 @@
 		49E6885224F9C9DC00EECD46 /* Thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931A24ECADA90078A2B9 /* Thread.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6885324F9C9DC00EECD46 /* Timer.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931424ECADA80078A2B9 /* Timer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6885424F9C9DC00EECD46 /* VectorStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931C24ECADA90078A2B9 /* VectorStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		49FAB98724FA991700E71C93 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49FAB98624FA991700E71C93 /* main.cpp */; };
 		49FAB98E24FA9C9300E71C93 /* liblibm8r.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 494D254E1D2E9055003755DB /* liblibm8r.a */; };
 /* End PBXBuildFile section */
 
@@ -188,7 +188,6 @@
 		49F39AB924F8792D0019D831 /* RtosTCP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtosTCP.h; path = ../components/libm8r/RtosTCP.h; sourceTree = "<group>"; };
 		49F39ABA24F8792D0019D831 /* RtosSystemInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RtosSystemInterface.cpp; path = ../components/libm8r/RtosSystemInterface.cpp; sourceTree = "<group>"; };
 		49FAB98424FA991700E71C93 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
-		49FAB98624FA991700E71C93 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,7 +321,6 @@
 		494BA1911D207AB700E72725 /* mac */ = {
 			isa = PBXGroup;
 			children = (
-				49FAB98524FA991700E71C93 /* test */,
 				49846003238C60ED001F4FD4 /* MacSystemInterface.cpp */,
 				49BF344723680892001E5508 /* MacLittleFS.cpp */,
 				49E1907D1DBAE2570030DC89 /* MacTCP.cpp */,
@@ -361,14 +359,6 @@
 				49FAB98424FA991700E71C93 /* test */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49FAB98524FA991700E71C93 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				49FAB98624FA991700E71C93 /* main.cpp */,
-			);
-			path = test;
 			sourceTree = "<group>";
 		};
 		49FAB98D24FA9C9300E71C93 /* Frameworks */ = {
@@ -542,7 +532,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49FAB98724FA991700E71C93 /* main.cpp in Sources */,
+				49192DE1256EE026001F3B1A /* m8rscript.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

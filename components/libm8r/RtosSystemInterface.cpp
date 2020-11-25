@@ -177,3 +177,8 @@ bool Timer::running() const
 {
     return xTimerIsTimerActive(reinterpret_cast<TimerHandle_t>(_data)) == pdTRUE;
 }
+
+extern "C" void app_main()
+{
+    m8rmain();
+}

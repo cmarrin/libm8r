@@ -114,3 +114,8 @@ bool Timer::running() const
 {
     return _data;
 }
+
+int main(int argc, char * argv[])
+{
+    m8rmain();
+}

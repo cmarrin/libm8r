@@ -141,3 +141,5 @@ private:
 SystemInterface* system();
 
 }
+
+extern void m8rmain();
