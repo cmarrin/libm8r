@@ -557,6 +557,7 @@
 				HEADER_SEARCH_PATHS = "";
 				LLVM_LTO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -572,6 +573,7 @@
 				HEADER_SEARCH_PATHS = "";
 				LLVM_LTO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = include;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
