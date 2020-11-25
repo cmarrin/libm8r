@@ -8,8 +8,6 @@
 -------------------------------------------------------------------------*/
 
 #include "Application.h"
-#include "MacSystemInterface.h"
-#include "MFS.h"
 
 static constexpr const char* WebServerRoot = "/sys/bin";
 
@@ -25,7 +23,6 @@ public:
 
 int main(int argc, char * argv[])
 {
-    m8r::initMacSystemInterface("m8rFSFile", [](const char* s) { ::printf("%s", s); });
     m8r::Application application(m8r::Application::HeartbeatType::Status, WebServerRoot, 23);
 
     // Upload files needed by web server

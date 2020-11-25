@@ -39,7 +39,6 @@
 		491B939324EDE8690078A2B9 /* Shell.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B939124EDE8690078A2B9 /* Shell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		491B939424EDE8690078A2B9 /* Shell.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 491B939224EDE8690078A2B9 /* Shell.cpp */; };
 		49736EE52505453700B0A09E /* JSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49736EE32505453700B0A09E /* JSON.cpp */; };
-		49846006238C60ED001F4FD4 /* MacSystemInterface.h in Headers */ = {isa = PBXBuildFile; fileRef = 49846004238C60ED001F4FD4 /* MacSystemInterface.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6883424F9C9B500EECD46 /* Application.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931624ECADA90078A2B9 /* Application.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6883524F9C9CA00EECD46 /* Atom.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B931324ECADA80078A2B9 /* Atom.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		49E6883624F9C9CA00EECD46 /* Base64.h in Headers */ = {isa = PBXBuildFile; fileRef = 491B930024ECADA60078A2B9 /* Base64.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -175,7 +174,6 @@
 		497DC63623A5835100748031 /* component.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = component.mk; path = ../main/component.mk; sourceTree = "<group>"; };
 		497DC63823A5849E00748031 /* sdkconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdkconfig; path = ../sdkconfig; sourceTree = "<group>"; };
 		49846003238C60ED001F4FD4 /* MacSystemInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacSystemInterface.cpp; sourceTree = "<group>"; };
-		49846004238C60ED001F4FD4 /* MacSystemInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacSystemInterface.h; sourceTree = "<group>"; };
 		49BF344723680892001E5508 /* MacLittleFS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacLittleFS.cpp; sourceTree = "<group>"; };
 		49E1907A1DBAE2570030DC89 /* MacUDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacUDP.cpp; sourceTree = "<group>"; };
 		49E1907B1DBAE2570030DC89 /* MacUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacUDP.h; sourceTree = "<group>"; };
@@ -326,7 +324,6 @@
 			children = (
 				49FAB98524FA991700E71C93 /* test */,
 				49846003238C60ED001F4FD4 /* MacSystemInterface.cpp */,
-				49846004238C60ED001F4FD4 /* MacSystemInterface.h */,
 				49BF344723680892001E5508 /* MacLittleFS.cpp */,
 				49E1907D1DBAE2570030DC89 /* MacTCP.cpp */,
 				49E1907C1DBAE2570030DC89 /* MacTCP.h */,
@@ -418,7 +415,6 @@
 				49E6883924F9C9CA00EECD46 /* Defines.h in Headers */,
 				49E6883F24F9C9CA00EECD46 /* IPAddr.h in Headers */,
 				49E6885324F9C9DC00EECD46 /* Timer.h in Headers */,
-				49846006238C60ED001F4FD4 /* MacSystemInterface.h in Headers */,
 				49E6885124F9C9DC00EECD46 /* Terminal.h in Headers */,
 				49E6884824F9C9DC00EECD46 /* StateMachine.h in Headers */,
 				49E6883E24F9C9CA00EECD46 /* HTTPServer.h in Headers */,

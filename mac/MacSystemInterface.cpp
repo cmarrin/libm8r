@@ -7,8 +7,6 @@
     found in the LICENSE file.
 -------------------------------------------------------------------------*/
 
-#include "MacSystemInterface.h"
-
 #include "GPIOInterface.h"
 #include "TaskManager.h"
 #include "Thread.h"
@@ -75,11 +73,6 @@ int32_t SystemInterface::heapFreeSize()
 }
 
 SystemInterface* SystemInterface::create() { return new MacSystemInterface(); }
-
-void m8r::initMacSystemInterface(const char* fsFile, ConsoleCB cb)
-{
-    LittleFS::setHostFilename(fsFile);
-}
 
 CppTime::Timer _timerManager;
 
