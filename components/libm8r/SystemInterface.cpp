@@ -29,6 +29,8 @@ SystemInterface::SystemInterface()
         _heartOn = !_heartOn;
         startHeartbeat();
     });
+    
+    _consoleCB = [](const char* s) { ::printf("%s", s); };
 }
 
 bool SystemInterface::runOneIteration()

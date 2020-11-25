@@ -47,11 +47,6 @@ public:
     {
     }
     
-    virtual void print(const char* s) const override
-    {
-        ::printf("%s", s);
-    }
-    
     virtual void setDeviceName(const char* name) { }
     
     virtual FS* fileSystem() override { return &_fileSystem; }

@@ -21,8 +21,6 @@
 
 using namespace m8r;
 
-static ConsoleCB _consoleCB;
-
 class MacSystemInterface : public SystemInterface
 {
 public:
@@ -30,15 +28,7 @@ public:
 
     MacSystemInterface()
     {
-    }
-    
-    virtual void print(const char* s) const override
-    {
-        if (_consoleCB) {
-            _consoleCB(s);
-        } else {
-            ::printf("%s", s);
-        }
+        LittleFS::setHostFilename("m8rFSFile");
     }
     
     virtual void setDeviceName(const char*) override { }
@@ -88,7 +78,6 @@ SystemInterface* SystemInterface::create() { return new MacSystemInterface(); }
 
 void m8r::initMacSystemInterface(const char* fsFile, ConsoleCB cb)
 {
-    _consoleCB = cb;
     LittleFS::setHostFilename(fsFile);
 }
 

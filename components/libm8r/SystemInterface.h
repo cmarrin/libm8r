@@ -30,6 +30,8 @@ class TaskManager;
 class UDP;
 class UDPDelegate;
 
+using ConsoleCB = std::function<void(const char*)>;
+
 //////////////////////////////////////////////////////////////////////////////
 //
 //  Class: SystemInterface
@@ -46,9 +48,7 @@ public:
 
     virtual ~SystemInterface() { }
     
-    virtual void init() { }
-
-    virtual void print(const char* s) const = 0;
+    void print(const char* s) const { _consoleCB(s); }
     
     void printf(const char* fmt, ...) const
     {
@@ -134,6 +134,8 @@ private:
     Vector<const ScriptingLanguage*> _scriptingLanguages;
     
     Vector<Event> _events;
+
+    ConsoleCB _consoleCB;
 };
 
 SystemInterface* system();

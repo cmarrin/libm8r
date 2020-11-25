@@ -100,79 +100,80 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		491B92E524ECADA40078A2B9 /* IPAddr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddr.h; path = ../libm8r/IPAddr.h; sourceTree = "<group>"; };
-		491B92E624ECADA40078A2B9 /* SystemTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemTime.h; path = ../libm8r/SystemTime.h; sourceTree = "<group>"; };
-		491B92E724ECADA50078A2B9 /* IPAddr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPAddr.cpp; path = ../libm8r/IPAddr.cpp; sourceTree = "<group>"; };
-		491B92E824ECADA50078A2B9 /* SharedPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedPtr.h; path = ../libm8r/SharedPtr.h; sourceTree = "<group>"; };
-		491B92E924ECADA50078A2B9 /* MUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MUDP.h; path = ../libm8r/MUDP.h; sourceTree = "<group>"; };
-		491B92EA24ECADA50078A2B9 /* Task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Task.cpp; path = ../libm8r/Task.cpp; sourceTree = "<group>"; };
-		491B92EB24ECADA50078A2B9 /* Mallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mallocator.cpp; path = ../libm8r/Mallocator.cpp; sourceTree = "<group>"; };
-		491B92EC24ECADA50078A2B9 /* MFS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFS.cpp; path = ../libm8r/MFS.cpp; sourceTree = "<group>"; };
-		491B92ED24ECADA50078A2B9 /* MStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStream.h; path = ../libm8r/MStream.h; sourceTree = "<group>"; };
-		491B92EE24ECADA50078A2B9 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../libm8r/Timer.cpp; sourceTree = "<group>"; };
-		491B92EF24ECADA50078A2B9 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64.cpp; path = ../libm8r/Base64.cpp; sourceTree = "<group>"; };
-		491B92F024ECADA50078A2B9 /* TCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPServer.h; path = ../libm8r/TCPServer.h; sourceTree = "<group>"; };
-		491B92F124ECADA50078A2B9 /* Mallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mallocator.h; path = ../libm8r/Mallocator.h; sourceTree = "<group>"; };
-		491B92F224ECADA50078A2B9 /* MUDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MUDP.cpp; path = ../libm8r/MUDP.cpp; sourceTree = "<group>"; };
-		491B92F324ECADA50078A2B9 /* GPIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPIOInterface.h; path = ../libm8r/GPIOInterface.h; sourceTree = "<group>"; };
-		491B92F524ECADA60078A2B9 /* MString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MString.h; path = ../libm8r/MString.h; sourceTree = "<group>"; };
-		491B92F624ECADA60078A2B9 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../libm8r/Application.cpp; sourceTree = "<group>"; };
-		491B92F724ECADA60078A2B9 /* Executable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Executable.h; path = ../libm8r/Executable.h; sourceTree = "<group>"; };
-		491B92F824ECADA60078A2B9 /* Containers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Containers.h; path = ../libm8r/Containers.h; sourceTree = "<group>"; };
-		491B92FA24ECADA60078A2B9 /* Atom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Atom.cpp; path = ../libm8r/Atom.cpp; sourceTree = "<group>"; };
-		491B92FB24ECADA60078A2B9 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../libm8r/Task.h; sourceTree = "<group>"; };
-		491B92FC24ECADA60078A2B9 /* Executable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Executable.cpp; path = ../libm8r/Executable.cpp; sourceTree = "<group>"; };
-		491B92FD24ECADA60078A2B9 /* MString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MString.cpp; path = ../libm8r/MString.cpp; sourceTree = "<group>"; };
-		491B92FE24ECADA60078A2B9 /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Terminal.h; path = ../libm8r/Terminal.h; sourceTree = "<group>"; };
-		491B92FF24ECADA60078A2B9 /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateMachine.h; path = ../libm8r/StateMachine.h; sourceTree = "<group>"; };
-		491B930024ECADA60078A2B9 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../libm8r/Base64.h; sourceTree = "<group>"; };
-		491B930124ECADA70078A2B9 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Error.h; path = ../libm8r/Error.h; sourceTree = "<group>"; };
-		491B930224ECADA70078A2B9 /* CallReturnValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CallReturnValue.h; path = ../libm8r/CallReturnValue.h; sourceTree = "<group>"; };
-		491B930324ECADA70078A2B9 /* SystemInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInterface.cpp; path = ../libm8r/SystemInterface.cpp; sourceTree = "<group>"; };
-		491B930424ECADA70078A2B9 /* SystemTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemTime.cpp; path = ../libm8r/SystemTime.cpp; sourceTree = "<group>"; };
-		491B930524ECADA70078A2B9 /* HTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HTTPServer.cpp; path = ../libm8r/HTTPServer.cpp; sourceTree = "<group>"; };
-		491B930624ECADA70078A2B9 /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scanner.h; path = ../libm8r/Scanner.h; sourceTree = "<group>"; };
-		491B930724ECADA70078A2B9 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = ../libm8r/HTTPServer.h; sourceTree = "<group>"; };
-		491B930824ECADA70078A2B9 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = ../libm8r/Defines.h; sourceTree = "<group>"; };
-		491B930924ECADA70078A2B9 /* Containers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Containers.cpp; path = ../libm8r/Containers.cpp; sourceTree = "<group>"; };
-		491B930B24ECADA70078A2B9 /* Telnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Telnet.h; path = ../libm8r/Telnet.h; sourceTree = "<group>"; };
-		491B930C24ECADA80078A2B9 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskManager.h; path = ../libm8r/TaskManager.h; sourceTree = "<group>"; };
-		491B930E24ECADA80078A2B9 /* Telnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Telnet.cpp; path = ../libm8r/Telnet.cpp; sourceTree = "<group>"; };
-		491B930F24ECADA80078A2B9 /* StringStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringStream.h; path = ../libm8r/StringStream.h; sourceTree = "<group>"; };
-		491B931024ECADA80078A2B9 /* TCP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TCP.cpp; path = ../libm8r/TCP.cpp; sourceTree = "<group>"; };
-		491B931124ECADA80078A2B9 /* SystemInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemInterface.h; path = ../libm8r/SystemInterface.h; sourceTree = "<group>"; };
-		491B931324ECADA80078A2B9 /* Atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Atom.h; path = ../libm8r/Atom.h; sourceTree = "<group>"; };
-		491B931424ECADA80078A2B9 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../libm8r/Timer.h; sourceTree = "<group>"; };
-		491B931524ECADA80078A2B9 /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TCPServer.cpp; path = ../libm8r/TCPServer.cpp; sourceTree = "<group>"; };
-		491B931624ECADA90078A2B9 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../libm8r/Application.h; sourceTree = "<group>"; };
-		491B931724ECADA90078A2B9 /* TaskManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskManager.cpp; path = ../libm8r/TaskManager.cpp; sourceTree = "<group>"; };
-		491B931824ECADA90078A2B9 /* Scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scanner.cpp; path = ../libm8r/Scanner.cpp; sourceTree = "<group>"; };
-		491B931924ECADA90078A2B9 /* MFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFS.h; path = ../libm8r/MFS.h; sourceTree = "<group>"; };
-		491B931A24ECADA90078A2B9 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../libm8r/Thread.h; sourceTree = "<group>"; };
-		491B931B24ECADA90078A2B9 /* TCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCP.h; path = ../libm8r/TCP.h; sourceTree = "<group>"; };
-		491B931C24ECADA90078A2B9 /* VectorStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorStream.h; path = ../libm8r/VectorStream.h; sourceTree = "<group>"; };
-		491B931D24ECADA90078A2B9 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Error.cpp; path = ../libm8r/Error.cpp; sourceTree = "<group>"; };
-		491B931E24ECADA90078A2B9 /* Terminal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Terminal.cpp; path = ../libm8r/Terminal.cpp; sourceTree = "<group>"; };
-		491B931F24ECADA90078A2B9 /* FileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileStream.h; path = ../libm8r/FileStream.h; sourceTree = "<group>"; };
-		491B935F24ECADFA0078A2B9 /* lfs_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs_util.h; path = ../libm8r/littlefs/lfs_util.h; sourceTree = "<group>"; };
-		491B936024ECADFA0078A2B9 /* lfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs.h; path = ../libm8r/littlefs/lfs.h; sourceTree = "<group>"; };
-		491B936124ECADFB0078A2B9 /* lfs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs.c; path = ../libm8r/littlefs/lfs.c; sourceTree = "<group>"; };
-		491B936224ECADFB0078A2B9 /* lfs_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs_util.c; path = ../libm8r/littlefs/lfs_util.c; sourceTree = "<group>"; };
-		491B936324ECADFB0078A2B9 /* MLittleFS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLittleFS.cpp; path = ../libm8r/littlefs/MLittleFS.cpp; sourceTree = "<group>"; };
-		491B936424ECADFB0078A2B9 /* MLittleFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLittleFS.h; path = ../libm8r/littlefs/MLittleFS.h; sourceTree = "<group>"; };
-		491B939124EDE8690078A2B9 /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shell.h; path = ../libm8r/Shell.h; sourceTree = "<group>"; };
-		491B939224EDE8690078A2B9 /* Shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shell.cpp; path = ../libm8r/Shell.cpp; sourceTree = "<group>"; };
-		492C7DA124EDF9FA0027B75E /* ScriptingLanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScriptingLanguage.h; path = ../libm8r/ScriptingLanguage.h; sourceTree = "<group>"; };
+		49192DDA256ED954001F3B1A /* component.mk */ = {isa = PBXFileReference; lastKnownFileType = text; name = component.mk; path = ../components/libm8r/component.mk; sourceTree = "<group>"; };
+		491B92E524ECADA40078A2B9 /* IPAddr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IPAddr.h; path = ../components/libm8r/IPAddr.h; sourceTree = "<group>"; };
+		491B92E624ECADA40078A2B9 /* SystemTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemTime.h; path = ../components/libm8r/SystemTime.h; sourceTree = "<group>"; };
+		491B92E724ECADA50078A2B9 /* IPAddr.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IPAddr.cpp; path = ../components/libm8r/IPAddr.cpp; sourceTree = "<group>"; };
+		491B92E824ECADA50078A2B9 /* SharedPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SharedPtr.h; path = ../components/libm8r/SharedPtr.h; sourceTree = "<group>"; };
+		491B92E924ECADA50078A2B9 /* MUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MUDP.h; path = ../components/libm8r/MUDP.h; sourceTree = "<group>"; };
+		491B92EA24ECADA50078A2B9 /* Task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Task.cpp; path = ../components/libm8r/Task.cpp; sourceTree = "<group>"; };
+		491B92EB24ECADA50078A2B9 /* Mallocator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Mallocator.cpp; path = ../components/libm8r/Mallocator.cpp; sourceTree = "<group>"; };
+		491B92EC24ECADA50078A2B9 /* MFS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MFS.cpp; path = ../components/libm8r/MFS.cpp; sourceTree = "<group>"; };
+		491B92ED24ECADA50078A2B9 /* MStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MStream.h; path = ../components/libm8r/MStream.h; sourceTree = "<group>"; };
+		491B92EE24ECADA50078A2B9 /* Timer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Timer.cpp; path = ../components/libm8r/Timer.cpp; sourceTree = "<group>"; };
+		491B92EF24ECADA50078A2B9 /* Base64.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Base64.cpp; path = ../components/libm8r/Base64.cpp; sourceTree = "<group>"; };
+		491B92F024ECADA50078A2B9 /* TCPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPServer.h; path = ../components/libm8r/TCPServer.h; sourceTree = "<group>"; };
+		491B92F124ECADA50078A2B9 /* Mallocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mallocator.h; path = ../components/libm8r/Mallocator.h; sourceTree = "<group>"; };
+		491B92F224ECADA50078A2B9 /* MUDP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MUDP.cpp; path = ../components/libm8r/MUDP.cpp; sourceTree = "<group>"; };
+		491B92F324ECADA50078A2B9 /* GPIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPIOInterface.h; path = ../components/libm8r/GPIOInterface.h; sourceTree = "<group>"; };
+		491B92F524ECADA60078A2B9 /* MString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MString.h; path = ../components/libm8r/MString.h; sourceTree = "<group>"; };
+		491B92F624ECADA60078A2B9 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = ../components/libm8r/Application.cpp; sourceTree = "<group>"; };
+		491B92F724ECADA60078A2B9 /* Executable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Executable.h; path = ../components/libm8r/Executable.h; sourceTree = "<group>"; };
+		491B92F824ECADA60078A2B9 /* Containers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Containers.h; path = ../components/libm8r/Containers.h; sourceTree = "<group>"; };
+		491B92FA24ECADA60078A2B9 /* Atom.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Atom.cpp; path = ../components/libm8r/Atom.cpp; sourceTree = "<group>"; };
+		491B92FB24ECADA60078A2B9 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = ../components/libm8r/Task.h; sourceTree = "<group>"; };
+		491B92FC24ECADA60078A2B9 /* Executable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Executable.cpp; path = ../components/libm8r/Executable.cpp; sourceTree = "<group>"; };
+		491B92FD24ECADA60078A2B9 /* MString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MString.cpp; path = ../components/libm8r/MString.cpp; sourceTree = "<group>"; };
+		491B92FE24ECADA60078A2B9 /* Terminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Terminal.h; path = ../components/libm8r/Terminal.h; sourceTree = "<group>"; };
+		491B92FF24ECADA60078A2B9 /* StateMachine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StateMachine.h; path = ../components/libm8r/StateMachine.h; sourceTree = "<group>"; };
+		491B930024ECADA60078A2B9 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Base64.h; path = ../components/libm8r/Base64.h; sourceTree = "<group>"; };
+		491B930124ECADA70078A2B9 /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Error.h; path = ../components/libm8r/Error.h; sourceTree = "<group>"; };
+		491B930224ECADA70078A2B9 /* CallReturnValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CallReturnValue.h; path = ../components/libm8r/CallReturnValue.h; sourceTree = "<group>"; };
+		491B930324ECADA70078A2B9 /* SystemInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemInterface.cpp; path = ../components/libm8r/SystemInterface.cpp; sourceTree = "<group>"; };
+		491B930424ECADA70078A2B9 /* SystemTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SystemTime.cpp; path = ../components/libm8r/SystemTime.cpp; sourceTree = "<group>"; };
+		491B930524ECADA70078A2B9 /* HTTPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HTTPServer.cpp; path = ../components/libm8r/HTTPServer.cpp; sourceTree = "<group>"; };
+		491B930624ECADA70078A2B9 /* Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Scanner.h; path = ../components/libm8r/Scanner.h; sourceTree = "<group>"; };
+		491B930724ECADA70078A2B9 /* HTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HTTPServer.h; path = ../components/libm8r/HTTPServer.h; sourceTree = "<group>"; };
+		491B930824ECADA70078A2B9 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = ../components/libm8r/Defines.h; sourceTree = "<group>"; };
+		491B930924ECADA70078A2B9 /* Containers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Containers.cpp; path = ../components/libm8r/Containers.cpp; sourceTree = "<group>"; };
+		491B930B24ECADA70078A2B9 /* Telnet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Telnet.h; path = ../components/libm8r/Telnet.h; sourceTree = "<group>"; };
+		491B930C24ECADA80078A2B9 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskManager.h; path = ../components/libm8r/TaskManager.h; sourceTree = "<group>"; };
+		491B930E24ECADA80078A2B9 /* Telnet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Telnet.cpp; path = ../components/libm8r/Telnet.cpp; sourceTree = "<group>"; };
+		491B930F24ECADA80078A2B9 /* StringStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StringStream.h; path = ../components/libm8r/StringStream.h; sourceTree = "<group>"; };
+		491B931024ECADA80078A2B9 /* TCP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TCP.cpp; path = ../components/libm8r/TCP.cpp; sourceTree = "<group>"; };
+		491B931124ECADA80078A2B9 /* SystemInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SystemInterface.h; path = ../components/libm8r/SystemInterface.h; sourceTree = "<group>"; };
+		491B931324ECADA80078A2B9 /* Atom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Atom.h; path = ../components/libm8r/Atom.h; sourceTree = "<group>"; };
+		491B931424ECADA80078A2B9 /* Timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Timer.h; path = ../components/libm8r/Timer.h; sourceTree = "<group>"; };
+		491B931524ECADA80078A2B9 /* TCPServer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TCPServer.cpp; path = ../components/libm8r/TCPServer.cpp; sourceTree = "<group>"; };
+		491B931624ECADA90078A2B9 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Application.h; path = ../components/libm8r/Application.h; sourceTree = "<group>"; };
+		491B931724ECADA90078A2B9 /* TaskManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TaskManager.cpp; path = ../components/libm8r/TaskManager.cpp; sourceTree = "<group>"; };
+		491B931824ECADA90078A2B9 /* Scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Scanner.cpp; path = ../components/libm8r/Scanner.cpp; sourceTree = "<group>"; };
+		491B931924ECADA90078A2B9 /* MFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFS.h; path = ../components/libm8r/MFS.h; sourceTree = "<group>"; };
+		491B931A24ECADA90078A2B9 /* Thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Thread.h; path = ../components/libm8r/Thread.h; sourceTree = "<group>"; };
+		491B931B24ECADA90078A2B9 /* TCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCP.h; path = ../components/libm8r/TCP.h; sourceTree = "<group>"; };
+		491B931C24ECADA90078A2B9 /* VectorStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VectorStream.h; path = ../components/libm8r/VectorStream.h; sourceTree = "<group>"; };
+		491B931D24ECADA90078A2B9 /* Error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Error.cpp; path = ../components/libm8r/Error.cpp; sourceTree = "<group>"; };
+		491B931E24ECADA90078A2B9 /* Terminal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Terminal.cpp; path = ../components/libm8r/Terminal.cpp; sourceTree = "<group>"; };
+		491B931F24ECADA90078A2B9 /* FileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileStream.h; path = ../components/libm8r/FileStream.h; sourceTree = "<group>"; };
+		491B935F24ECADFA0078A2B9 /* lfs_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs_util.h; path = ../components/libm8r/littlefs/lfs_util.h; sourceTree = "<group>"; };
+		491B936024ECADFA0078A2B9 /* lfs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = lfs.h; path = ../components/libm8r/littlefs/lfs.h; sourceTree = "<group>"; };
+		491B936124ECADFB0078A2B9 /* lfs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs.c; path = ../components/libm8r/littlefs/lfs.c; sourceTree = "<group>"; };
+		491B936224ECADFB0078A2B9 /* lfs_util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = lfs_util.c; path = ../components/libm8r/littlefs/lfs_util.c; sourceTree = "<group>"; };
+		491B936324ECADFB0078A2B9 /* MLittleFS.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MLittleFS.cpp; path = ../components/libm8r/littlefs/MLittleFS.cpp; sourceTree = "<group>"; };
+		491B936424ECADFB0078A2B9 /* MLittleFS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLittleFS.h; path = ../components/libm8r/littlefs/MLittleFS.h; sourceTree = "<group>"; };
+		491B939124EDE8690078A2B9 /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shell.h; path = ../components/libm8r/Shell.h; sourceTree = "<group>"; };
+		491B939224EDE8690078A2B9 /* Shell.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shell.cpp; path = ../components/libm8r/Shell.cpp; sourceTree = "<group>"; };
+		492C7DA124EDF9FA0027B75E /* ScriptingLanguage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScriptingLanguage.h; path = ../components/libm8r/ScriptingLanguage.h; sourceTree = "<group>"; };
 		493E015E24E9DCBD00EF89B3 /* cpptime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = cpptime.h; sourceTree = "<group>"; };
 		494D254E1D2E9055003755DB /* liblibm8r.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = liblibm8r.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		49736EDC250081A000B0A09E /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = favicon.ico; path = ../web/favicon.ico; sourceTree = "<group>"; };
 		49736EDD250081A000B0A09E /* gwd_workspace.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = gwd_workspace.json; path = ../web/gwd_workspace.json; sourceTree = "<group>"; };
 		49736EDE250081A000B0A09E /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../web/index.html; sourceTree = "<group>"; };
-		49736EE22505453600B0A09E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = ../libm8r/JSON.h; sourceTree = "<group>"; };
-		49736EE32505453700B0A09E /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = ../libm8r/JSON.cpp; sourceTree = "<group>"; };
-		497DC63423A5771A00748031 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = ../esp/Makefile; sourceTree = "<group>"; };
-		497DC63623A5835100748031 /* component.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = component.mk; path = ../esp/main/component.mk; sourceTree = "<group>"; };
-		497DC63823A5849E00748031 /* sdkconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdkconfig; path = ../esp/sdkconfig; sourceTree = "<group>"; };
+		49736EE22505453600B0A09E /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = ../components/libm8r/JSON.h; sourceTree = "<group>"; };
+		49736EE32505453700B0A09E /* JSON.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JSON.cpp; path = ../components/libm8r/JSON.cpp; sourceTree = "<group>"; };
+		497DC63423A5771A00748031 /* Makefile */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; name = Makefile; path = ../Makefile; sourceTree = "<group>"; };
+		497DC63623A5835100748031 /* component.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = component.mk; path = ../main/component.mk; sourceTree = "<group>"; };
+		497DC63823A5849E00748031 /* sdkconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = sdkconfig; path = ../sdkconfig; sourceTree = "<group>"; };
 		49846003238C60ED001F4FD4 /* MacSystemInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacSystemInterface.cpp; sourceTree = "<group>"; };
 		49846004238C60ED001F4FD4 /* MacSystemInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacSystemInterface.h; sourceTree = "<group>"; };
 		49BF344723680892001E5508 /* MacLittleFS.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MacLittleFS.cpp; sourceTree = "<group>"; };
@@ -180,15 +181,14 @@
 		49E1907B1DBAE2570030DC89 /* MacUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacUDP.h; sourceTree = "<group>"; };
 		49E1907C1DBAE2570030DC89 /* MacTCP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MacTCP.h; sourceTree = "<group>"; };
 		49E1907D1DBAE2570030DC89 /* MacTCP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MacTCP.cpp; sourceTree = "<group>"; };
-		49F39AB024F871FC0019D831 /* m8rscript.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = m8rscript.cpp; path = ../esp/main/m8rscript.cpp; sourceTree = "<group>"; };
-		49F39AB124F8792C0019D831 /* RtosWifi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtosWifi.cpp; sourceTree = "<group>"; };
-		49F39AB224F8792C0019D831 /* RtosTCP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtosTCP.cpp; sourceTree = "<group>"; };
-		49F39AB324F8792C0019D831 /* RtosGPIOInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtosGPIOInterface.cpp; sourceTree = "<group>"; };
-		49F39AB524F8792D0019D831 /* component.mk */ = {isa = PBXFileReference; lastKnownFileType = text; path = component.mk; sourceTree = "<group>"; };
-		49F39AB624F8792D0019D831 /* RtosWifi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtosWifi.h; sourceTree = "<group>"; };
-		49F39AB724F8792D0019D831 /* RtosGPIOInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtosGPIOInterface.h; sourceTree = "<group>"; };
-		49F39AB924F8792D0019D831 /* RtosTCP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RtosTCP.h; sourceTree = "<group>"; };
-		49F39ABA24F8792D0019D831 /* RtosSystemInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = RtosSystemInterface.cpp; sourceTree = "<group>"; };
+		49F39AB024F871FC0019D831 /* m8rscript.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = m8rscript.cpp; path = ../main/m8rscript.cpp; sourceTree = "<group>"; };
+		49F39AB124F8792C0019D831 /* RtosWifi.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RtosWifi.cpp; path = ../components/libm8r/RtosWifi.cpp; sourceTree = "<group>"; };
+		49F39AB224F8792C0019D831 /* RtosTCP.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RtosTCP.cpp; path = ../components/libm8r/RtosTCP.cpp; sourceTree = "<group>"; };
+		49F39AB324F8792C0019D831 /* RtosGPIOInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RtosGPIOInterface.cpp; path = ../components/libm8r/RtosGPIOInterface.cpp; sourceTree = "<group>"; };
+		49F39AB624F8792D0019D831 /* RtosWifi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtosWifi.h; path = ../components/libm8r/RtosWifi.h; sourceTree = "<group>"; };
+		49F39AB724F8792D0019D831 /* RtosGPIOInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtosGPIOInterface.h; path = ../components/libm8r/RtosGPIOInterface.h; sourceTree = "<group>"; };
+		49F39AB924F8792D0019D831 /* RtosTCP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RtosTCP.h; path = ../components/libm8r/RtosTCP.h; sourceTree = "<group>"; };
+		49F39ABA24F8792D0019D831 /* RtosSystemInterface.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = RtosSystemInterface.cpp; path = ../components/libm8r/RtosSystemInterface.cpp; sourceTree = "<group>"; };
 		49FAB98424FA991700E71C93 /* test */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = test; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FAB98624FA991700E71C93 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,10 +212,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49192DD8256ED790001F3B1A /* esp */ = {
+			isa = PBXGroup;
+			children = (
+				49192DD9256ED7E3001F3B1A /* main */,
+				49F39AB324F8792C0019D831 /* RtosGPIOInterface.cpp */,
+				49F39AB724F8792D0019D831 /* RtosGPIOInterface.h */,
+				49F39ABA24F8792D0019D831 /* RtosSystemInterface.cpp */,
+				49F39AB224F8792C0019D831 /* RtosTCP.cpp */,
+				49F39AB924F8792D0019D831 /* RtosTCP.h */,
+				49F39AB124F8792C0019D831 /* RtosWifi.cpp */,
+				49F39AB624F8792D0019D831 /* RtosWifi.h */,
+				497DC63423A5771A00748031 /* Makefile */,
+				497DC63823A5849E00748031 /* sdkconfig */,
+				49192DDA256ED954001F3B1A /* component.mk */,
+			);
+			name = esp;
+			sourceTree = "<group>";
+		};
+		49192DD9256ED7E3001F3B1A /* main */ = {
+			isa = PBXGroup;
+			children = (
+				49F39AB024F871FC0019D831 /* m8rscript.cpp */,
+				497DC63623A5835100748031 /* component.mk */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
 		491B92E424ECAD7E0078A2B9 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				494D25891D32B2E6003755DB /* esprtos */,
+				49192DD8256ED790001F3B1A /* esp */,
 				494BA1911D207AB700E72725 /* mac */,
 				491B935E24ECADDB0078A2B9 /* littlefs */,
 				491B92F624ECADA60078A2B9 /* Application.cpp */,
@@ -297,6 +324,7 @@
 		494BA1911D207AB700E72725 /* mac */ = {
 			isa = PBXGroup;
 			children = (
+				49FAB98524FA991700E71C93 /* test */,
 				49846003238C60ED001F4FD4 /* MacSystemInterface.cpp */,
 				49846004238C60ED001F4FD4 /* MacSystemInterface.h */,
 				49BF344723680892001E5508 /* MacLittleFS.cpp */,
@@ -307,25 +335,6 @@
 				493E015E24E9DCBD00EF89B3 /* cpptime.h */,
 			);
 			name = mac;
-			sourceTree = "<group>";
-		};
-		494D25891D32B2E6003755DB /* esprtos */ = {
-			isa = PBXGroup;
-			children = (
-				49F39AB324F8792C0019D831 /* RtosGPIOInterface.cpp */,
-				49F39AB724F8792D0019D831 /* RtosGPIOInterface.h */,
-				49F39ABA24F8792D0019D831 /* RtosSystemInterface.cpp */,
-				49F39AB224F8792C0019D831 /* RtosTCP.cpp */,
-				49F39AB924F8792D0019D831 /* RtosTCP.h */,
-				49F39AB124F8792C0019D831 /* RtosWifi.cpp */,
-				49F39AB624F8792D0019D831 /* RtosWifi.h */,
-				49F39AB524F8792D0019D831 /* component.mk */,
-				49FA4DEA24D5DC3C001069AE /* main */,
-				497DC63423A5771A00748031 /* Makefile */,
-				497DC63823A5849E00748031 /* sdkconfig */,
-			);
-			name = esprtos;
-			path = ../libm8r;
 			sourceTree = "<group>";
 		};
 		49736EDB2500814A00B0A09E /* web */ = {
@@ -342,7 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				491B92E424ECAD7E0078A2B9 /* src */,
-				49FAB98524FA991700E71C93 /* test */,
 				49736EDB2500814A00B0A09E /* web */,
 				49E647E91D00B68F005F5059 /* Products */,
 				49FAB98D24FA9C9300E71C93 /* Frameworks */,
@@ -356,15 +364,6 @@
 				49FAB98424FA991700E71C93 /* test */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		49FA4DEA24D5DC3C001069AE /* main */ = {
-			isa = PBXGroup;
-			children = (
-				49F39AB024F871FC0019D831 /* m8rscript.cpp */,
-				497DC63623A5835100748031 /* component.mk */,
-			);
-			name = main;
 			sourceTree = "<group>";
 		};
 		49FAB98524FA991700E71C93 /* test */ = {

@@ -8,20 +8,12 @@
     found in the LICENSE file.
 -------------------------------------------------------------------------*/
 
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "esp_system.h"
-#include "esp_heap_caps.h"
-
 #include "Application.h"
 #include "Defines.h"
 #include "Mallocator.h"
 #include "MStream.h"
 #include "SystemInterface.h"
 #include "SystemTime.h"
-
-#include <unistd.h>
-#include <chrono>
 
 static m8r::Duration MainTaskSleepDuration = 10ms;
 
@@ -42,6 +34,6 @@ extern "C" void app_main()
 
     while(1) {
         application.runOneIteration();
-        vTaskDelay(pdMS_TO_TICKS(MainTaskSleepDuration.ms()));
+        MainTaskSleepDuration.sleep();
     }
 }

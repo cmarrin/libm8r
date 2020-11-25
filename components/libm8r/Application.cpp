@@ -40,8 +40,6 @@ Application::Application(HeartbeatType heartbeatType, const char* webServerRoot,
     if (heartbeatType != HeartbeatType::None) {
         system()->setHeartrate(1s);
     }
-
-    system()->init();
     
     _webServerRoot = webServerRoot;
     _shellPort = shellPort;
