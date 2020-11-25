@@ -217,6 +217,10 @@ bool Application::runOneIteration()
 
 void Application::uploadFiles(const Vector<const char*>& files, const char* destPath)
 {
+#ifdef __APPLE__
+    // This function is used to upload files from the real MacOS filesystem to the
+    // LittleFS based virtual filesystem. On ESP do nothing
+    
     for (const auto it : files) {
         m8r::String toPath;
         FILE* fromFile = fopen(it, "r");
@@ -275,4 +279,5 @@ void Application::uploadFiles(const Vector<const char*>& files, const char* dest
         }
         fclose(fromFile);
     }
+#endif
 }
