@@ -21,6 +21,13 @@ public:
     virtual CallReturnValue execute() override;
 
 private:
+    void showPrompt() const;
+    void processLine(const String&);
+    
+    bool _done = false;
+    Vector<String> _lines;
+    Map<String, String> _env;
+    bool _needPrompt = true;
 };
     
 }

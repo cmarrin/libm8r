@@ -13,9 +13,36 @@ using namespace m8r;
 
 Shell::Shell()
 {
+    _env.emplace("PATH", "/sys/bin");
+    _env.emplace("CWD", "/home");
+    _env.emplace("HOME", "/home/cmarrin");
 }
 
 CallReturnValue Shell::execute()
 {
-    return CallReturnValue(CallReturnValue::Type::Finished);
+    if (_needPrompt) {
+        showPrompt();
+        _needPrompt = false;
+    }
+    
+    while (_lines.size()) {
+        const String& line = _lines.front();
+        _lines.pop_front();
+        if (line.size()) {
+            processLine(line);
+        }
+        _needPrompt = true;
+    }
+    
+    return _done ? CallReturnValue(CallReturnValue::Type::Finished) :
+                   CallReturnValue(CallReturnValue::Type::WaitForEvent);
+}
+
+void Shell::showPrompt() const
+{
+    printf("[%s] > ", _env.find("CWD")->value.c_str());
+}
+
+void Shell::processLine(const String&)
+{
 }
