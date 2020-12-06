@@ -112,6 +112,16 @@ public:
         _data[--_size] = T();
     }
     
+    void push_front(T const &x)
+    {
+        insert(begin(), x);
+    }
+    
+    void pop_front()
+    {
+        erase(begin());
+    }
+    
     template<class... Args>
     void emplace_back(Args&&... args)
     {
